@@ -1,0 +1,203 @@
+{% extends 'RockITTechgamesBundle::layout.html.twig' %}
+
+{% block content %}
+
+<div class="row">
+
+        <div class="col-sm-9 game-main">
+
+          <div class="game-header">
+        <h1 class="game-title">Green Video Competition <a class="btn btn-link btn-lg" rel="edit" href="{{path('game_edit', {'gameId':'1'})}}">Edit</a></h1>
+        
+      </div>
+
+          <div class="row">
+              <div class="col-sm-4">
+                  <!-- <img src="http://placehold.it/250x250" alt="..."> -->
+                  <img src="/techgames/web/bundles/rockittechgames/images/group.png" alt="...">
+              </div>
+
+              <div class="col-sm-8">
+                  
+                  <div class="reg">
+                    <div class="reg-option">
+                      <div>Seats open</div>
+                      <div class="reg-value">11</div>  
+                    </div>
+                    <div class="reg-option">
+                      <div>Team Size</div>
+                      <div class="reg-value">2-3</div>  
+                    </div>
+                    <div class="reg-option">
+                      <div>Location</div>
+                      <div class="reg-value">On</div>  
+                    </div>
+                  </div>
+
+                  {% if gameId == 1 %}
+                  <p class="lead">This event combines video production skills, environmental awareness and marketing skills. Student teams will create a short video (maximum length 4 minutes) about environmental initiatives at their college designed to promote environmental awareness.</p>
+                  {% else %}
+                  <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                  {% endif %}
+
+              </div>
+
+
+          </div>
+          
+          <div class="row">
+            <h3>Schedule</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th><span class="pull-left">Saturday</span></th>
+                  <th><span class="pull-right">April 12, 2014</span></th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>7:00-8:00 AM</td>
+                  <td>Registration</td>
+                </tr>
+                <tr>
+                  <td>8:00-8:30 AM</td>
+                  <td>Game Kickoff (Commons Area - Confirm your Schedules</td>
+                </tr>
+                <tr>
+                  <td>8:30-12:30 AM</td>
+                  <td>3 events begin at the same time and run all morning</td>
+                </tr>
+              </tbody>
+            </table>
+
+            {% if gameId == 1 %}
+
+            <h3>Details</h3>
+            <ul>
+              <li>The following items are included in the event attachment (see game page).</li>
+              <li>Purpose and expectations for the video</li>
+              <li>Judging criteria</li>
+              <li>Technical specifications for the video</li>
+              <li>Rules and expectations for the game</li>
+              <li>Contact information for sending questions</li>
+            </ul>
+            <p>PLEASE NOTE: Students need to abide by all national and international copyright laws (i.e. images, music, etc.)</p>
+            <p>A one-hour toll-free conference call will be scheduled on March 10, 2014 and will be open for all teams to attend.  Student teams will have an opportunity to obtain further information on Avnet’s requirements.  Students should be ready to ask questions that will help refine what Avnet expects students to achieve with this video.  Students will also have an email contact at Avnet who will field those questions.</p>
+            <p>Student teams will then have until March 30, 2014 to prepare the video.  All video entries must be submitted by 5PM Arizona time on March 30th, 2014.  Not sure how to get started? Looking for some resources? Check out these resources, compliments of SkilledUp!</p>
+            <p>All videos will receive a preliminary review to ensure compliance with the published rules of this competition.</p>
+            <p>The winning team will be announced on April 12, 2014.</p>
+
+            <h3>Skills</h3>
+            <ul>
+              <li>Multimedia video experience</li>
+              <li>Experience uploading video to YouTube</li>
+              <li>Video scripting</li>
+              <li>Marketing</li>
+              <li>Interviewing skills</li>
+              <li>Presentation skills</li>
+              <li>Awareness of environmental issues &amp;associated technologies</li>
+            </ul>
+
+            <h3>Parameters</h3>
+            <p>Submitted video must:</p>
+            <ul>
+              <li>be no longer than 4 minutes (no minimum)</li> 
+              <li>comply with the published rules of this competition</li>
+              <li>reflect the environmental values of the student’s college or university</li>
+              <li>convey a compelling message that raises environmental awareness</li>
+              <li>demonstrates overall quality of workmanship in editing</li>
+              <li>be interesting</li>
+              <li>have smooth flowing transitions and audio levels</li>
+              <li>use graphic materials</li>
+              <li>effectively highlight the use of technology</li>
+              <li>addresses the college’s efforts to reduce its carbon footprint</li>
+            </ul>
+
+            <h3>Grading</h3>
+            <ul>
+              <li>25 pts - Donec Ullam</li>
+              <li>25 pts - Nulla non Metus</li>
+              <li>50 pts - Vestibulum id Ligula</li>
+            </ul>
+
+            {% else %}
+
+            <h3>Skills</h3>
+            <p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2) Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2)</p>
+
+            <h3>Scoring</h3>
+            <p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2) Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2)</p>
+
+            <h3>Parameters</h3>
+            <p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2) Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2)</p>
+
+            <h3>Equipment</h3>
+            <p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2) Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2)</p>
+
+            <h3>Grading</h3>
+            <ul>
+              <li>25 pts - Donec Ullam</li>
+              <li>25 pts - Nulla non Metus</li>
+              <li>50 pts - Vestibulum id Ligula</li>
+            </ul>
+
+            {% endif %}
+
+          </div>
+          
+
+          
+
+        </div><!-- /.game-main -->
+
+        <div class="col-sm-3 game-sidebar">
+          
+
+          <div class="sidebar-module"> 
+            <button class="btn btn-primary btn-lg btn-join" >Join Game</button>
+          </div>
+          
+          <div class="sidebar-module">  
+              <div>
+              <label >Sponsor</label>              
+              <a href="#">RockIT Bootcamp</a>
+              </div>
+              <div>
+              <label> Game Owner</label>
+              <a href="#">Cat Silverman</a>
+              </div>
+              <div>
+              <label>Judge</label>
+              <a href="#">Alfredo Valdes</a>
+              </div>
+          </div>
+
+          <div class="sidebar-module"> 
+            <label>Awards</label>         
+            <p>Each team member will receive $1,000 Scholarship</p>            
+          </div>
+
+          <div class="sidebar-module"> 
+            <label>Scheduled Teams</label>         
+            <ol class="list-unstyled">
+              <li><a href="#">Zoom Zoom (3)</a></li>
+              <li><a href="#">Artyletes (2)</a></li>
+              <li><a href="#">UATSpeedies (2)</a></li>
+              <li><a href="#">MCCTShooters (1)</a></li>
+              <li><a href="#">We Do Windows (3)</a></li>
+            <ol>       
+          </div>
+
+          <div class="sidebar-module"> 
+            <label>Standby Teams</label>         
+            <ol class="list-unstyled">
+              <li><a href="#">ITT West Phoenix 2 (3)</a></li>              
+            <ol>       
+          </div>
+        </div><!-- /.game-sidebar -->
+
+      </div><!-- /.row -->
+
+{% endblock %}
+

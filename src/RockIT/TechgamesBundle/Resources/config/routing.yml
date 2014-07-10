@@ -1,0 +1,12 @@
+rock_it_techgames_homepage:
+    pattern:  /
+    defaults: { _controller: RockITTechgamesBundle:Default:index }
+
+game_detail:
+    pattern:  /games/{gameId}
+    defaults: { _controller: RockITTechgamesBundle:Game:detail }
+
+game_edit:
+    pattern:  /games/{gameId}/edit
+    defaults: { _controller: RockITTechgamesBundle:Game:edit }
+

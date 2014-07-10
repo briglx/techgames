@@ -1,0 +1,7 @@
+parameters:
+#    rock_it_techgames.example.class: RockIT\TechgamesBundle\Example
+
+services:
+#    rock_it_techgames.example:
+#        class: %rock_it_techgames.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
