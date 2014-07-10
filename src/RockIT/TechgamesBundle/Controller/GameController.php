@@ -20,4 +20,11 @@ class GameController extends Controller
         return $this->render('RockITTechgamesBundle:Game:edit.html.twig', 
             array('gameId' => $gameId));
     }
+
+    public function joinAction($gameId)
+    {
+
+        return $this->render('RockITTechgamesBundle:Game:join.html.twig', 
+            array('gameId' => $gameId));
+    }
 }

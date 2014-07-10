@@ -10,3 +10,19 @@ game_edit:
     pattern:  /games/{gameId}/edit
     defaults: { _controller: RockITTechgamesBundle:Game:edit }
 
+game_join:
+    pattern:  /games/{gameId}/join
+    defaults: { _controller: RockITTechgamesBundle:Game:join }
+
+
+sponsor_detail:
+    pattern:  /sponsors/{sponsorId}
+    defaults: { _controller: RockITTechgamesBundle:Sponsor:detail }
+
+profile_detail:
+    pattern:  /profiles/{profileId}
+    defaults: { _controller: RockITTechgamesBundle:Profile:detail }
+
+team_detail:
+    pattern:  /teams/{teamId}
+    defaults: { _controller: RockITTechgamesBundle:Team:detail }

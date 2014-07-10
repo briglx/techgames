@@ -155,21 +155,21 @@
           
 
           <div class="sidebar-module"> 
-            <button class="btn btn-primary btn-lg btn-join" >Join Game</button>
+            <a class="btn btn-primary btn-lg btn-join" href="{{path('game_join', {'gameId':'1'})}}">Join Game</a>
           </div>
           
           <div class="sidebar-module">  
               <div>
               <label >Sponsor</label>              
-              <a href="#">RockIT Bootcamp</a>
+              <a href="{{path('profile_detail', {'profileId':'1'})}}">RockIT Bootcamp</a>
               </div>
               <div>
               <label> Game Owner</label>
-              <a href="#">Cat Silverman</a>
+              <a href="{{path('profile_detail', {'profileId':'2'})}}">Cat Silverman</a>
               </div>
               <div>
               <label>Judge</label>
-              <a href="#">Alfredo Valdes</a>
+              <a href="{{path('profile_detail', {'profileId':'3'})}}">Alfredo Valdes</a>
               </div>
           </div>
 
@@ -181,18 +181,18 @@
           <div class="sidebar-module"> 
             <label>Scheduled Teams</label>         
             <ol class="list-unstyled">
-              <li><a href="#">Zoom Zoom (3)</a></li>
-              <li><a href="#">Artyletes (2)</a></li>
-              <li><a href="#">UATSpeedies (2)</a></li>
-              <li><a href="#">MCCTShooters (1)</a></li>
-              <li><a href="#">We Do Windows (3)</a></li>
+              <li><a href="{{path('team_detail', {'teamId':'1'})}}">Zoom Zoom (3)</a></li>
+              <li><a href="{{path('team_detail', {'teamId':'2'})}}">Artyletes (2)</a></li>
+              <li><a href="{{path('team_detail', {'teamId':'3'})}}">UATSpeedies (2)</a></li>
+              <li><a href="{{path('team_detail', {'teamId':'4'})}}">MCCTShooters (1)</a></li>
+              <li><a href="{{path('team_detail', {'teamId':'5'})}}">We Do Windows (3)</a></li>
             <ol>       
           </div>
 
           <div class="sidebar-module"> 
             <label>Standby Teams</label>         
             <ol class="list-unstyled">
-              <li><a href="#">ITT West Phoenix 2 (3)</a></li>              
+              <li><a href="{{path('team_detail', {'teamId':'6'})}}">ITT West Phoenix 2 (3)</a></li>              
             <ol>       
           </div>
         </div><!-- /.game-sidebar -->
