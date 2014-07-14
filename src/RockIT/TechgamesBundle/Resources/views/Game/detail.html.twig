@@ -7,14 +7,14 @@
         <div class="col-sm-9 game-main">
 
           <div class="game-header">
-        <h1 class="game-title">Green Video Competition <a class="btn btn-link btn-lg" rel="edit" href="{{path('game_edit', {'gameId':'1'})}}">Edit</a></h1>
+        <h1 class="game-title">{{game.title}} <a class="btn btn-link btn-lg" rel="edit" href="{{path('game_edit', {'gameId':game.getGameId()})}}">Edit</a></h1>
         
       </div>
 
           <div class="row">
               <div class="col-sm-4">
                   <!-- <img src="http://placehold.it/250x250" alt="..."> -->
-                  <img src="/techgames/web/bundles/rockittechgames/images/group.png" alt="...">
+                  <img src="/techgames/web/bundles/rockittechgames/images/{{game.image}}" alt="...">
               </div>
 
               <div class="col-sm-8">
@@ -161,7 +161,7 @@
           <div class="sidebar-module">  
               <div>
               <label >Sponsor</label>              
-              <a href="{{path('profile_detail', {'profileId':'1'})}}">RockIT Bootcamp</a>
+              <a href="{{path('school_detail', {'schoolId':'1'})}}">RockIT Bootcamp</a>
               </div>
               <div>
               <label> Game Owner</label>

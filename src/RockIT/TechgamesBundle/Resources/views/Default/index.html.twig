@@ -60,6 +60,77 @@
           
         <div class="row">
 
+            {% for game in games %}
+             
+            <div class="col-6 col-sm-6 col-lg-4 gm gm-default" style="background-color: {{game.getColor()}}" >
+                <a href="{{path('game_detail', {'gameId':game.getGameId()})}}">
+                    <h2 class="title">{{game.getShortTitle()}}</h2>
+                    
+                    {% if game.getImage() == "" %}
+
+                    <i class="glyphicon glyphicon-{{game.getIcon()}}"></i>
+
+                    {% else %}
+
+                    <img src="{{ asset('bundles/rockittechgames/images/')  }}{{game.getImage()}}" alt="..."> 
+
+                    {% endif %}
+
+                                   
+                </a>
+                <div hidden class="data-content">
+
+                    <div class="reg">
+                      <div class="reg-option">
+                        <div>Seats open</div>
+                        <div class="reg-value">11</div>  
+                      </div>
+                      <div class="reg-option">
+                        <div>Team Size</div>
+                        <div class="reg-value">2-3</div>  
+                      </div>
+                      <div class="reg-option">
+                        <div>Location</div>
+                        <div class="reg-value">On</div>  
+                      </div>
+                    </div>
+                    <p class="desc">Combines video production skills, environmental awareness and marketing skills. Create a short video about environmental initiatives at their college designed to promote environmental awareness.</p>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Tasks</th>
+                          <th>Due</th>
+                          <th>&nbsp;</th>                      
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Registration</td>
+                          <td>Sat Apr 12</td>
+                          <td>7:00 AM - 8:00 AM</td>                     
+                        </tr>
+                        <tr>
+                          <td>Game Kick Off</td>
+                          <td>Sat Apr 12</td>
+                          <td>8:00 AM - 8:30 AM</td>                      
+                        </tr>
+                        <tr>
+                          <td>3 Events begin ...</td>
+                          <td>Sat Apr 12</td>
+                          <td>8:30 AM - 12:30 AM</td>                    
+                        </tr>
+                        <tr>
+                          <td>On the Go Lunch</td>
+                          <td>Sat Apr 12</td>
+                          <td>All Day</td>                      
+                        </tr>
+                      </tbody>
+                    </table> 
+                </div>
+            </div> 
+
+            {% endfor %}
+
             <div class="col-6 col-sm-6 col-lg-4 gm gm-default" >
                 <a href="{{path('game_detail', {'gameId':'1'})}}">
                     <h2 class="title">Green Video</h2>
