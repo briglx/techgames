@@ -44,7 +44,7 @@ class Game
         $this->_color = $color;
 
         // Default values
-        
+        $this->_description = "Combines video production skills, environmental awareness and marketing skills. Create a short video about environmental initiatives at their college designed to promote environmental awareness.";
         $this->_sponsor = "RockIT Bootcamp";
         $this->_supportingSponsors =  array('1' => "Cisco");
         $this->_gameOwner = new Profile(2, "Cat","Silverman", "csilverman@example.com");
@@ -309,7 +309,7 @@ class Game
 
     public function setSchedule($schedule)
     {
-        $this->_school = $schedule;
+        $this->_schedule = $schedule;
     }
    
 

@@ -21,8 +21,7 @@
           <div class="carousel-inner">
             <div class="item active">
               <simg src="http://placehold.it/1140x350" alt="..." />
-              <img src="{{ asset(
-        'bundles/rockittechgames/images/computer.jpg') }}" />
+              <img src="{{ asset('bundles/rockittechgames/images/computer.jpg') }}" />
               <div class="carousel-caption">
                 
                   <h1>Saturday, April 11</h1>
@@ -33,19 +32,7 @@
                 Registration opening late fall 2014</p>
               </div>
             </div>
-            <!-- <div class="item">
-              <img src="http://placehold.it/1140x350" alt="...">
-              <div class="carousel-caption">
-                This is cool
-              </div>
-            </div>
-            <div class="item">
-              <img src="http://placehold.it/1140x350" alt="...">
-              <div class="carousel-caption">
-                This is rad
-              </div>
-            </div> -->
-            ...
+            
           </div>
 
           <!-- Controls -->
@@ -83,18 +70,19 @@
                     <div class="reg">
                       <div class="reg-option">
                         <div>Seats open</div>
-                        <div class="reg-value">11</div>  
+                        <div class="reg-value">{{game.getSeatsOpen()}}</div>  
                       </div>
                       <div class="reg-option">
                         <div>Team Size</div>
-                        <div class="reg-value">2-3</div>  
+                        <div class="reg-value">{{game.getTeamSize()}}</div>  
                       </div>
                       <div class="reg-option">
                         <div>Location</div>
-                        <div class="reg-value">On</div>  
+                        <div class="reg-value">{{game.getLocation()}}</div>  
                       </div>
                     </div>
-                    <p class="desc">Combines video production skills, environmental awareness and marketing skills. Create a short video about environmental initiatives at their college designed to promote environmental awareness.</p>
+                    <p class="desc">{{game.getDescription()}}</p>
+                    {%  if game.getSchedule()|length > 0 %}
                     <table class="table">
                       <thead>
                         <tr>
@@ -104,202 +92,24 @@
                         </tr>
                       </thead>
                       <tbody>
+                    {% for event in game.getSchedule() %}
                         <tr>
-                          <td>Registration</td>
-                          <td>Sat Apr 12</td>
-                          <td>7:00 AM - 8:00 AM</td>                     
+                            <td>{{ event.getPrettyTitle() }}</td>
+                            <td>{{ event.getStartDate()|date("D M j") }}</td>
+                            <td>{{ event.getStartDateTime()|date("g:i A") }} - {{ event.getEndDateTime()|date("g:i A") }}</td>
                         </tr>
-                        <tr>
-                          <td>Game Kick Off</td>
-                          <td>Sat Apr 12</td>
-                          <td>8:00 AM - 8:30 AM</td>                      
-                        </tr>
-                        <tr>
-                          <td>3 Events begin ...</td>
-                          <td>Sat Apr 12</td>
-                          <td>8:30 AM - 12:30 AM</td>                    
-                        </tr>
-                        <tr>
-                          <td>On the Go Lunch</td>
-                          <td>Sat Apr 12</td>
-                          <td>All Day</td>                      
-                        </tr>
+                    {% endfor %}
                       </tbody>
-                    </table> 
+                    </table>
+                    {%  endif %}
                 </div>
             </div> 
 
             {% endfor %}
 
-            <div class="col-6 col-sm-6 col-lg-4 gm gm-default" >
-                <a href="{{path('game_detail', {'gameId':'1'})}}">
-                    <h2 class="title">Green Video</h2>
-                    <img src="{{ asset('bundles/rockittechgames/images/group.png') }}" alt="...">                
-                </a>
-                <div hidden class="data-content">
-
-                    <div class="reg">
-                      <div class="reg-option">
-                        <div>Seats open</div>
-                        <div class="reg-value">11</div>  
-                      </div>
-                      <div class="reg-option">
-                        <div>Team Size</div>
-                        <div class="reg-value">2-3</div>  
-                      </div>
-                      <div class="reg-option">
-                        <div>Location</div>
-                        <div class="reg-value">On</div>  
-                      </div>
-                    </div>
-                    <p class="desc">Combines video production skills, environmental awareness and marketing skills. Create a short video about environmental initiatives at their college designed to promote environmental awareness.</p>
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Tasks</th>
-                          <th>Due</th>
-                          <th>&nbsp;</th>                      
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Registration</td>
-                          <td>Sat Apr 12</td>
-                          <td>7:00 AM - 8:00 AM</td>                     
-                        </tr>
-                        <tr>
-                          <td>Game Kick Off</td>
-                          <td>Sat Apr 12</td>
-                          <td>8:00 AM - 8:30 AM</td>                      
-                        </tr>
-                        <tr>
-                          <td>3 Events begin ...</td>
-                          <td>Sat Apr 12</td>
-                          <td>8:30 AM - 12:30 AM</td>                    
-                        </tr>
-                        <tr>
-                          <td>On the Go Lunch</td>
-                          <td>Sat Apr 12</td>
-                          <td>All Day</td>                      
-                        </tr>
-                      </tbody>
-                    </table> 
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-6 col-lg-4 gm " >
-                <h2 class="title">Fastest Computer</h2>
-                <img src="{{ asset('bundles/rockittechgames/images/build.png') }}" alt="...">
-                <div hidden class="data-content">
-                    <p class="desc">Build a fast computer.</p>
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Tasks</th>
-                          <th>Due</th>
-                          <th>&nbsp;</th>                      
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>SHowup </td>
-                          <td>Sat Apr 12</td>
-                          <td>7:00 AM - 8:00 AM</td>                     
-                        </tr>
-                        <tr>
-                          <td>Game Kick Off</td>
-                          <td>Sat Apr 12</td>
-                          <td>8:00 AM - 8:30 AM</td>                      
-                        </tr>
-                        <tr>
-                          <td>3 Events begin ...</td>
-                          <td>Sat Apr 12</td>
-                          <td>8:30 AM - 12:30 AM</td>                      
-                        </tr>
-                        <tr>
-                          <td>On the Go Lunch</td>
-                          <td>Sat Apr 12</td>
-                          <td>All Day</td>                      
-                        </tr>
-                      </tbody>
-                    </table> 
-                </div>
-            </div>
-
-            <div class="col-6 col-sm-6 col-lg-4 gm gm-primary2" >
-                <h2 class="title">Virtual Android</h2>
-                <i class="glyphicon glyphicon-signal"></i>
-            </div>
-
-            <div class="col-6 col-sm-6 col-lg-4 gm gm-primary">
-                <h2 class="title">Desktop Domination</h2>
-                <i class="glyphicon glyphicon-adjust"></i>
-            </div>
-            
-            <div class="col-6 col-sm-6 col-lg-4 gm ">
-                <h2 class="title">Robot Race</h2>
-                <img src="{{ asset('bundles/rockittechgames/images/robot.png') }}" alt="...">
-            </div>
-            
-            <div class="col-6 col-sm-6 col-lg-4 gm gm-tertiary">
-                <h2 class="title">Java Blitz</h2>
-                <i class="glyphicon glyphicon-fire"></i>
-            </div>
-
-            <div class="col-6 col-sm-6 col-lg-4 gm gm-default">
-                <h2 class="title">Supply Chain</h2>
-                <i class="glyphicon glyphicon-refresh"></i>
-            </div>
-
-            <div class="col-6 col-sm-6 col-lg-4 gm gm-primary3">
-                <h2 class="title">Cisco Networking Battle</h2>
-                <i class="glyphicon glyphicon-screenshot"></i>
-            </div>
-
-
           </div><!--/row-->
         </div><!--/span-->
-
-        
       </div><!--/row-->
-
-        <!-- Define content -->
-        <div class="gm-popup">
-            <div>
-                <p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>Tasks</th>
-                      <th>Due</th>
-                      <th>&nbsp;</th>                      
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Lame</td>
-                      <td>Sat Apr 12</td>
-                      <td>7:00 AM - 8:00 AM</td>                     
-                    </tr>
-                    <tr>
-                      <td>Game Kick Off</td>
-                      <td>Sat Apr 12</td>
-                      <td>8:00 AM - 8:30 AM</td>                      
-                    </tr>
-                    <tr>
-                      <td>3 Events begin ...</td>
-                      <td>Sat Apr 12</td>
-                      <td>8:30 AM - 12:30 AM</td>                      
-                    </tr>
-                    <tr>
-                      <td>On the Go Lunch</td>
-                      <td>Sat Apr 12</td>
-                      <td>All Day</td>                      
-                    </tr>
-                  </tbody>
-                </table>                
-            </div>
-        </div>
 {% endblock %}
 
 
