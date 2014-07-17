@@ -6,9 +6,16 @@ Welcome to Avnet Techgames. Built by RockIT Bootcamp
 1) Deploying
 ----------------------------------
 
-# Navigate to /usr/share/nginx/html/techgames
-# get latest code with git pull
-# Clear Cache
-php app/console cache:clear --env=prod --no-debug
-# Change ownership
-sudo chown -R www-data:www-data .
+1. Navigate to /usr/share/nginx/html/techgames
+2. get latest code with `git pull`
+3. Clear Cache
+
+```bash
+$ php app/console cache:clear --env=prod --no-debug
+```
+
+4. Change ownership
+
+```bash
+ sudo chown -R www-data:www-data .
+```
