@@ -12,9 +12,20 @@
       </div>
 
           <div class="row">
-              <div class="col-sm-4">
-                  <!-- <img src="http://placehold.it/250x250" alt="..."> -->
-                  <img src="/techgames/web/bundles/rockittechgames/images/{{game.image}}" alt="...">
+              <div class="col-sm-4"  >
+                <div class="logo" style="background-color: {{game.getColor()}}">
+
+                  {% if game.getImage() == "" %}
+
+                      <i class="glyphicon glyphicon-{{game.getIcon()}}"></i>
+
+                  {% else %}
+
+                      <img src="{{ asset('bundles/rockittechgames/images/')  }}{{game.getImage()}}" alt="...">
+
+                  {% endif %}
+                </div>
+
               </div>
 
               <div class="col-sm-8">
