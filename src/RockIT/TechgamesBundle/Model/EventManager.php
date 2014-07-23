@@ -41,7 +41,7 @@ class EventManager {
         return $this->_items[$eventId];
     }
 
-    public function getGameEvent($gameId)
+    public function getGameEvents($gameId)
     {
         $results = array();
 

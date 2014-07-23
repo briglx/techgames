@@ -33,132 +33,79 @@
                   <div class="reg">
                     <div class="reg-option">
                       <div>Seats open</div>
-                      <div class="reg-value">11</div>  
+                      <div class="reg-value">{{game.getSeatsOpen()}}</div>
                     </div>
                     <div class="reg-option">
                       <div>Team Size</div>
-                      <div class="reg-value">2-3</div>  
+                      <div class="reg-value">{{game.getTeamSize()}}</div>
                     </div>
                     <div class="reg-option">
                       <div>Location</div>
-                      <div class="reg-value">On</div>  
+                      <div class="reg-value">{{game.getLocation()}}</div>
                     </div>
                   </div>
-
-                  {% if gameId == 1 %}
-                  <p class="lead">This event combines video production skills, environmental awareness and marketing skills. Student teams will create a short video (maximum length 4 minutes) about environmental initiatives at their college designed to promote environmental awareness.</p>
-                  {% else %}
-                  <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                  {% endif %}
-
+                  <p class="lead">{{game.getDescription()}}</p>
               </div>
-
-
           </div>
           
           <div class="row">
+            {%  if game.getSchedule()|length > 0 %}
+
             <h3>Schedule</h3>
             <table class="table">
+              {% for key, dailyEvents in game.getDailySchedule() %}
               <thead>
                 <tr>
-                  <th><span class="pull-left">Saturday</span></th>
-                  <th><span class="pull-right">April 12, 2014</span></th>
-                  
+                  <th><span class="pull-left">{{ key|date("l") }}</span></th>
+                  <th><span class="pull-right">{{ key|date("F j, Y") }}</span></th>
                 </tr>
               </thead>
               <tbody>
+                {% for event in dailyEvents %}
                 <tr>
-                  <td>7:00-8:00 AM</td>
-                  <td>Registration</td>
+                  <td>{{ event.getStartDateTime()|date("g:i") }}-{{ event.getEndDateTime()|date("g:i A") }}</td>
+                  <td>{{ event.getTitle() }}</td>
                 </tr>
-                <tr>
-                  <td>8:00-8:30 AM</td>
-                  <td>Game Kickoff (Commons Area - Confirm your Schedules</td>
-                </tr>
-                <tr>
-                  <td>8:30-12:30 AM</td>
-                  <td>3 events begin at the same time and run all morning</td>
-                </tr>
+                {% endfor %}
+
               </tbody>
+              {% endfor %}
             </table>
 
-            {% if gameId == 1 %}
+            {%  endif %}
 
+            {%  if game.getOverview()|length > 0 %}
             <h3>Details</h3>
-            <ul>
-              <li>The following items are included in the event attachment (see game page).</li>
-              <li>Purpose and expectations for the video</li>
-              <li>Judging criteria</li>
-              <li>Technical specifications for the video</li>
-              <li>Rules and expectations for the game</li>
-              <li>Contact information for sending questions</li>
-            </ul>
-            <p>PLEASE NOTE: Students need to abide by all national and international copyright laws (i.e. images, music, etc.)</p>
-            <p>A one-hour toll-free conference call will be scheduled on March 10, 2014 and will be open for all teams to attend.  Student teams will have an opportunity to obtain further information on Avnet’s requirements.  Students should be ready to ask questions that will help refine what Avnet expects students to achieve with this video.  Students will also have an email contact at Avnet who will field those questions.</p>
-            <p>Student teams will then have until March 30, 2014 to prepare the video.  All video entries must be submitted by 5PM Arizona time on March 30th, 2014.  Not sure how to get started? Looking for some resources? Check out these resources, compliments of SkilledUp!</p>
-            <p>All videos will receive a preliminary review to ensure compliance with the published rules of this competition.</p>
-            <p>The winning team will be announced on April 12, 2014.</p>
+            {{ game.getOverview()|raw }}
+            {%  endif %}
 
+
+            {%  if game.getSkills()|length > 0 %}
             <h3>Skills</h3>
-            <ul>
-              <li>Multimedia video experience</li>
-              <li>Experience uploading video to YouTube</li>
-              <li>Video scripting</li>
-              <li>Marketing</li>
-              <li>Interviewing skills</li>
-              <li>Presentation skills</li>
-              <li>Awareness of environmental issues &amp;associated technologies</li>
-            </ul>
+            {{ game.getSkills()|raw }}
+            {%  endif %}
 
-            <h3>Parameters</h3>
-            <p>Submitted video must:</p>
-            <ul>
-              <li>be no longer than 4 minutes (no minimum)</li> 
-              <li>comply with the published rules of this competition</li>
-              <li>reflect the environmental values of the student’s college or university</li>
-              <li>convey a compelling message that raises environmental awareness</li>
-              <li>demonstrates overall quality of workmanship in editing</li>
-              <li>be interesting</li>
-              <li>have smooth flowing transitions and audio levels</li>
-              <li>use graphic materials</li>
-              <li>effectively highlight the use of technology</li>
-              <li>addresses the college’s efforts to reduce its carbon footprint</li>
-            </ul>
-
-            <h3>Grading</h3>
-            <ul>
-              <li>25 pts - Donec Ullam</li>
-              <li>25 pts - Nulla non Metus</li>
-              <li>50 pts - Vestibulum id Ligula</li>
-            </ul>
-
-            {% else %}
-
-            <h3>Skills</h3>
-            <p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2) Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2)</p>
-
+            {%  if game.getScoring()|length > 0 %}
             <h3>Scoring</h3>
-            <p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2) Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2)</p>
+            {{ game.getScoring()|raw }}
+            {%  endif %}
 
+            {%  if game.getParameters()|length > 0 %}
             <h3>Parameters</h3>
-            <p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2) Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2)</p>
+            {{ game.getParameters()|raw }}
+            {%  endif %}
 
+            {%  if game.getEquipment()|length > 0 %}
             <h3>Equipment</h3>
-            <p>Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2) Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2)</p>
+            {{ game.getEquipment()|raw }}
+            {%  endif %}
 
+            {%  if game.getGrading()|length > 0 %}
             <h3>Grading</h3>
-            <ul>
-              <li>25 pts - Donec Ullam</li>
-              <li>25 pts - Nulla non Metus</li>
-              <li>50 pts - Vestibulum id Ligula</li>
-            </ul>
-
-            {% endif %}
+            {{ game.getGrading()|raw }}
+            {%  endif %}
 
           </div>
-          
-
-          
 
         </div><!-- /.game-main -->
 
@@ -169,43 +116,58 @@
             <a class="btn btn-primary btn-lg btn-join" href="{{path('game_join', {'gameId':'1'})}}">Join Game</a>
           </div>
           
-          <div class="sidebar-module">  
+          <div class="sidebar-module">
+              {%  if game.getSponsor()|length > 0 %}
               <div>
               <label >Sponsor</label>              
-              <a href="{{path('school_detail', {'schoolId':'1'})}}">RockIT Bootcamp</a>
+              <a href="{{path('sponsor_detail', {'sponsorId': game.getSponsor().getSponsorId() })}}">{{ game.getSponsor().getName() }}</a>
               </div>
+              {%  endif %}
+              {%  if game.getGameOwner()|length > 0 %}
               <div>
               <label> Game Owner</label>
-              <a href="{{path('profile_detail', {'profileId':'2'})}}">Cat Silverman</a>
+              <a href="{{path('profile_detail', {'profileId':game.getGameOwner().getProfileId()})}}">{{ game.getGameOwner().getDisplayName() }}</a>
               </div>
+              {%  endif %}
+              {%  if game.getJudge()|length > 0 %}
               <div>
               <label>Judge</label>
-              <a href="{{path('profile_detail', {'profileId':'3'})}}">Alfredo Valdes</a>
+              <a href="{{path('profile_detail', {'profileId':game.getJudge().getProfileId()})}}">{{ game.getJudge().getDisplayName() }}</a>
               </div>
+              {%  endif %}
           </div>
 
+          {%  if game.getAwards()|length > 0 %}
           <div class="sidebar-module"> 
             <label>Awards</label>         
-            <p>Each team member will receive $1,000 Scholarship</p>            
+            <p>{{ game.getAwards() }}</p>
           </div>
+          {%  endif %}
+
 
           <div class="sidebar-module"> 
-            <label>Scheduled Teams</label>         
+            <label>Scheduled Teams</label>
+            {%  if game.getTeams()|length > 0 %}
             <ol class="list-unstyled">
-              <li><a href="{{path('team_detail', {'teamId':'1'})}}">Zoom Zoom (3)</a></li>
-              <li><a href="{{path('team_detail', {'teamId':'2'})}}">Artyletes (2)</a></li>
-              <li><a href="{{path('team_detail', {'teamId':'3'})}}">UATSpeedies (2)</a></li>
-              <li><a href="{{path('team_detail', {'teamId':'4'})}}">MCCTShooters (1)</a></li>
-              <li><a href="{{path('team_detail', {'teamId':'5'})}}">We Do Windows (3)</a></li>
-            <ol>       
+              {% for key, team in game.getTeams() %}
+              <li><a href="{{path('team_detail', {'teamId':team.getTeamId()})}}">{{ team.getName() }} ({{ team.getMembers()|length }})</a></li>
+              {% endfor %}
+            <ol>
+            {%  else %}
+            <p>No Teams Scheduled</p>
+            {%  endif %}
           </div>
 
+          {%  if game.getStandbyTeams()|length > 0 %}
           <div class="sidebar-module"> 
             <label>Standby Teams</label>         
             <ol class="list-unstyled">
-              <li><a href="{{path('team_detail', {'teamId':'6'})}}">ITT West Phoenix 2 (3)</a></li>              
+              {% for key, team in game.getStandbyTeams() %}
+              <li><a href="{{path('team_detail', {'teamId':team.getTeamId()})}}">{{ team.getName() }} ({{ team.getMembers()|length }})</a></li>
+              {% endfor %}
             <ol>       
           </div>
+          {%  endif %}
         </div><!-- /.game-sidebar -->
 
       </div><!-- /.row -->

@@ -33,6 +33,7 @@ class Game
     private $_awards;
 
     private $_schedule;
+    private $_dailyEvents;
 
     public function __construct($gameId, $shortTitle, $title, $image, $icon, $color)
     {        
@@ -45,22 +46,22 @@ class Game
 
         // Default values
         $this->_description = "Combines video production skills, environmental awareness and marketing skills. Create a short video about environmental initiatives at their college designed to promote environmental awareness.";
-        $this->_sponsor = "RockIT Bootcamp";
+        $this->_sponsor = "";
         $this->_supportingSponsors =  array('1' => "Cisco");
         $this->_gameOwner = new Profile(2, "Cat","Silverman", "csilverman@example.com");
-        $this->_judge = new Profile(3, "Alfredo","Valdes", "avaldes@example.com");
+        $this->_judge = "";
         $this->_location = "On";
         $this->_capacity = "55";
         $this->_teamSize = "2-3";
         $this->_seatsOpen = "11";
-        $this->_teams = array('1' =>"Zoom Zoom (3)", '2'=>"Artyletes (2)",'3' =>"UATSpeedies (2)", '4'=>"MCCTShooters (1)", '5'=>"We Do Windows (3)");
-        $this->_standbyTeams = array('6' =>"ITT West Phoenix 2 (3)");
-        $this->_overview = ".";
-        $this->_skills = array("* Donec ullamcorper, * Somsidkeic, * Fusce dapidbu");
+        $this->_teams = array();
+        $this->_standbyTeams =  array();
+        $this->_overview = "";
+        $this->_skills = "<ul><li>Donec ullamcorper</li><li>Somsidkeic</li><li>Fusce dapidbu</li></ul>";
         $this->_scoring = "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.";
-        $this->_parameters = "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.";
+        $this->_parameters = "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo. (2) Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.";
         $this->_equipment = "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.";
-        $this->_grading = "* 25 pts - Donec ullamcorper * 25 pts - Praesent consectetur * 50 pts - Ac cursus";
+        $this->_grading = "<ul><li>25 pts - Donec Ullam</li><li>25 pts - Nulla non Metus</li><li>50 pts - Vestibulum id Ligula</li></ul>";
         $this->_awards = "Each team will receive $1000 scholarship";
         $this->_schedule = "SCHEDULE GOES HERE";
 
@@ -309,8 +310,38 @@ class Game
 
     public function setSchedule($schedule)
     {
+
+        //
+        $this->_dailyEvents =  array();
+
+
         $this->_schedule = $schedule;
+
+        // Group by day for events in schedule
+        foreach($schedule as $event){
+
+            // Append to existing day
+            if (array_key_exists($event->getStartDate(), $this->_dailyEvents)) {
+
+                array_push($this->_dailyEvents[$event->getStartDate()], $event);
+
+            }
+            else {
+
+                // Add new day with array of events
+                $this->_dailyEvents[$event->getStartDate()] = array($event);
+
+            }
+
+        }
     }
+
+    public function getDailySchedule()
+    {
+        return $this->_dailyEvents;
+    }
+
+
    
 
 }

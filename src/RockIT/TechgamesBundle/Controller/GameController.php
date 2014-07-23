@@ -17,6 +17,7 @@ class GameController extends Controller
     public function detailAction($gameId)
     {
         $game = $this->_gameManager->getGame($gameId);
+
         return $this->render('RockITTechgamesBundle:Game:detail.html.twig', 
             array('game' => $game, 'gameId' => $gameId));
     }
