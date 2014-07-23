@@ -2,6 +2,10 @@ rock_it_techgames_homepage:
     pattern:  /
     defaults: { _controller: RockITTechgamesBundle:Default:index }
 
+rock_it_techgames_about:
+    pattern:  /about
+    defaults: { _controller: RockITTechgamesBundle:Default:about }
+
 game_detail:
     pattern:  /game/{gameId}
     defaults: { _controller: RockITTechgamesBundle:Game:detail }

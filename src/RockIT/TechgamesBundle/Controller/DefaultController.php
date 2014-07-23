@@ -23,14 +23,9 @@ class DefaultController extends Controller
             array('games' => $games));
     }
 
-
-    /**
-     * @Route("/game/{gameId}", gameId="0")
-     */
-    public function gameDetailAction($gameId)
+    public function aboutAction()
     {
-
-        return $this->render('AcmeDemoBundle:Welcome:gameDetail.html.twig', 
-            array('gameId' => $gameId));
+        return $this->render('RockITTechgamesBundle:Default:about.html.twig');
     }
+
 }
