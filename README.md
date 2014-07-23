@@ -13,7 +13,13 @@ Welcome to Avnet Techgames. Built by RockIT Bootcamp
     ```bash
     $ php app/console cache:clear --env=prod --no-debug
     ```
-4. Change ownership
+4. Update resources
+
+    ```bash
+    $ php app/console assets:install
+    ```
+    
+5. Change ownership
 
     ```bash
     $ sudo chown -R www-data:www-data .
