@@ -282,6 +282,22 @@ footer .sponsor img {
     max-height:100%;
 }
 
+@media (min-width: 768px){
+    .carousel {
+        margin-bottom: 5px;
+        margin-left: -8px;
+        margin-right: 8px;
+    }
+}
+
+@media (min-width: 1200px){
+    .carousel {
+        margin-bottom: 5px;
+        margin-left: -8px;
+        margin-right: -8px;
+    }
+}
+
 .carousel-caption p, .carousel-caption h1 {
     text-align: left;
 }
