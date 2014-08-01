@@ -47,4 +47,10 @@ class TeamManager {
 
     }
 
+    public function getAllTeams()
+    {
+        return $this->_items;
+
+    }
+
 } 

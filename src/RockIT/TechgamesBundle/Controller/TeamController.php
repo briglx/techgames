@@ -4,8 +4,17 @@ namespace RockIT\TechgamesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use RockIT\TechgamesBundle\Model\TeamManager;
+
 class TeamController extends Controller
 {
+
+    private $_teamManager;
+
+    public function __construct()
+    {
+        $this->_teamManager = new TeamManager();
+    }
     
     public function detailAction($teamId)
     {
@@ -17,6 +26,8 @@ class TeamController extends Controller
     public function overviewAction()
     {
 
-        return $this->render('RockITTechgamesBundle:Team:overview.html.twig');
+        $teams = $this->_teamManager->getAllTeams();
+
+        return $this->render('RockITTechgamesBundle:Team:overview.html.twig', array("teams" => $teams));
     }
 }
