@@ -6,7 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class SponsorController extends Controller
 {
-    
+
+    public function overviewAction()
+    {
+
+        return $this->render('RockITTechgamesBundle:Sponsor:overview.html.twig');
+    }
+
     public function detailAction($sponsorId)
     {
 

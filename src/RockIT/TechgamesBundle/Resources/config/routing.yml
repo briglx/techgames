@@ -6,6 +6,10 @@ rock_it_techgames_about:
     pattern:  /about
     defaults: { _controller: RockITTechgamesBundle:Default:about }
 
+rock_it_techgames_newsroom:
+    pattern:  /newsroom
+    defaults: { _controller: RockITTechgamesBundle:Default:newsroom }
+
 game_detail:
     pattern:  /game/{gameId}
     defaults: { _controller: RockITTechgamesBundle:Game:detail }
@@ -18,6 +22,10 @@ game_join:
     pattern:  /game/{gameId}/join
     defaults: { _controller: RockITTechgamesBundle:Game:join }
 
+
+sponsor_overview:
+    pattern:  /sponsors/
+    defaults: { _controller: RockITTechgamesBundle:Sponsor:overview }
 
 sponsor_detail:
     pattern:  /sponsors/{sponsorId}

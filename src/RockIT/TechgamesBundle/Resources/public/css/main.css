@@ -92,6 +92,34 @@ img.resize{
     font-weight: 100;
 }
 
+/*@media (min-width: 50px) {*/
+    /*.carousel-caption h1 {*/
+        /*font-size: 36px;*/
+    /*}*/
+
+    /*.carousel-caption .lead {*/
+        /*font-size: 24px;*/
+    /*}*/
+
+    /*.carousel-caption p {*/
+        /*font-size: 14px;*/
+    /*}*/
+/*}*/
+
+@media (min-width: 992px) {
+    .carousel-caption h1 {
+        font-size: 56px;
+    }
+
+    .carousel-caption .lead {
+        font-size: 27px;
+    }
+
+    .carousel-caption p {
+        font-size: 19px;
+    }
+}
+
 
 .container {
     margin-top: 50px;
@@ -317,6 +345,16 @@ footer .sponsor img {
     padding: 0px;
     width: 100%;
     margin-top: -200px;
+}
+
+.sp {
+
+    margin: 5px;
+    height:120px;
+    padding:0px;
+    overflow: hidden;
+    text-align: center;
+
 }
 
 /*div {

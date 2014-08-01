@@ -28,4 +28,9 @@ class DefaultController extends Controller
         return $this->render('RockITTechgamesBundle:Default:about.html.twig');
     }
 
+    public function newsRoomAction()
+    {
+        return $this->render('RockITTechgamesBundle:Default:newsroom.html.twig');
+    }
+
 }
