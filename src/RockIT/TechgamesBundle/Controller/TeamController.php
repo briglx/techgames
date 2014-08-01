@@ -13,4 +13,10 @@ class TeamController extends Controller
         return $this->render('RockITTechgamesBundle:Team:detail.html.twig', 
             array('teamId' => $teamId));
     }
+
+    public function overviewAction()
+    {
+
+        return $this->render('RockITTechgamesBundle:Team:overview.html.twig');
+    }
 }
