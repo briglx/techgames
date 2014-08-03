@@ -31,13 +31,13 @@ class TeamManager {
 
 
         $members = array();
-        array_push($members, $this->_profileManager->getProfile(1));
         array_push($members, $this->_profileManager->getProfile(2));
         array_push($members, $this->_profileManager->getProfile(3));
+        array_push($members, $this->_profileManager->getProfile(4));
         $this->_items[1]->setMembers($members);
 
         $members = array();
-        array_push($members, $this->_profileManager->getProfile(4));
+        array_push($members, $this->_profileManager->getProfile(5));
         $this->_items[3]->setMembers($members);
     }
 
