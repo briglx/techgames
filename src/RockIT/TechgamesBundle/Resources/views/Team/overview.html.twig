@@ -2,12 +2,61 @@
 
 {% block content %}
 
-<h1>Teams Overview</h1>
+<h1>Teams</h1>
+    <div class="row teams-row">
 
-    <ul>
+        <div class="col-md-9">
+            <div class="inner-addon left-addon">
+                <i class="glyphicon glyphicon-search"></i>
+                <input type="text" class="form-control" placeholder="Find a team" />
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+            <button type="button" class="btn btn-primary pull-right">New Team</button>
+
+            <button type="button" class="btn btn-primary pull-right">My Teams</button>
+        </div>
+
+
+    </div>
+
+    <div class="row team-row">
+
     {% for team in teams %}
-        <li>{{ team.getName() }}</li>
+
+        <div class="col-md-6">
+
+            <div class="panel panel-default team">
+                <div class="panel-heading clearfix">
+                    <h1 class="panel-title">{{ team.getName() }}<button type="button" class="btn pull-right">Join</button> </h1>
+
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            {{ team.getMembers() | length }} Members
+                        </div>
+                        <div class="col-md-9">
+                            {{ team.getGames() | length }} Games
+                        </div>
+                    </div>
+                    <div class="row">
+                    {% for member in team.getMembers() %}
+                        <div class="p">
+                            <img class="enter-block" data-src="{{ asset('bundles/rockittechgames/js/holder.js/90x90')}}" alt="90x90" class="img-rounded">
+                            <span >{{ member.getDisplayName() }}</span>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
     {% endfor %}
-    </ul>
+    </div>
 
 {% endblock %}

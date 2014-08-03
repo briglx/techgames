@@ -14,6 +14,7 @@ class Team {
     private $_teamId;
     private $_name;
     private $_members;
+    private $_games;
 
     function __construct($teamId, $name)
     {
@@ -21,7 +22,7 @@ class Team {
         $this->_teamId = $teamId;
 
         $this->_members = Array();
-
+        $this->_games = Array();
     }
 
 
@@ -72,6 +73,24 @@ class Team {
     {
         $this->_members = $members;
     }
+
+    /**
+     * @return array
+     */
+    public function getGames()
+    {
+        return $this->_games;
+    }
+
+    /**
+     * @param array $games
+     */
+    public function setGames($games)
+    {
+        $this->_games = $games;
+    }
+
+
 
 
 
