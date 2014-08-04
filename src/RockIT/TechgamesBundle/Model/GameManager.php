@@ -11,15 +11,15 @@ class GameManager
     private $_items = array();
     private $_eventManager;
     private $_profileManager;
-    private $_teamManager;
+    protected $_teamManager;
 
-    public function __construct()
+
+    public function __construct(TeamManager $teamManager)
     {
 
         $this->_eventManager = new EventManager();
         $this->_profileManager = new ProfileManager();
-        $this->_teamManager = new TeamManager();
-
+        $this->_teamManager =  $teamManager;
 
         $this->_items[1] = new Game(1, "Green Video", "Green Video Compitition","group.png", "", "");
         $this->_items[2] = new Game(2, "Fastest Computer", "HP Build the Fastest Computer", "build.png", "", "");
@@ -86,6 +86,9 @@ class GameManager
         $teams = array();
         array_push($teams, $this->_teamManager->getTeam(1));
         $this->_items[1]->setTeams($teams);
+        foreach($teams as $team){
+            $team->addGame($this->_items[1]);
+        }
 
         $standbyTeams = array();
         array_push($standbyTeams, $this->_teamManager->getTeam(3));

@@ -8,16 +8,10 @@ use RockIT\TechgamesBundle\Model\GameManager;
 class DefaultController extends Controller
 {
 
-    private $_gameManager;
-
-    public function __construct()
-    {
-        $this->_gameManager = new GameManager();    
-    }
-
     public function indexAction()
     {
-        $games = $this->_gameManager->getAllGames();
+        $gameManager = $this->get('gameManager');
+        $games = $gameManager->getAllGames();
 
         return $this->render('RockITTechgamesBundle:Default:index.html.twig',
             array('games' => $games));

@@ -45,8 +45,8 @@
                     <div class="row">
                     {% for member in team.getMembers() %}
                         <div class="p">
-                            <img class="enter-block" data-src="{{ asset('bundles/rockittechgames/js/holder.js/90x90')}}" alt="90x90" class="img-rounded">
-                            <span >{{ member.getDisplayName() }}</span>
+                            <a href="{{path('profile_detail', {'profileId':member.getProfileId()})}}"><img class="enter-block" data-src="{{ asset('bundles/rockittechgames/js/holder.js/90x90')}}" alt="90x90" class="img-rounded"></a>
+                            <span ><a href="{{path('profile_detail', {'profileId':member.getProfileId()})}}">{{ member.getDisplayName() }}</a></span>
                         </div>
                     {% endfor %}
                     </div>

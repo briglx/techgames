@@ -9,24 +9,16 @@ use RockIT\TechgamesBundle\Model\TeamManager;
 class TeamController extends Controller
 {
 
-    private $_teamManager;
-
-    public function __construct()
-    {
-        $this->_teamManager = new TeamManager();
-    }
-    
     public function detailAction($teamId)
     {
-
         return $this->render('RockITTechgamesBundle:Team:detail.html.twig', 
             array('teamId' => $teamId));
     }
 
     public function overviewAction()
     {
-
-        $teams = $this->_teamManager->getAllTeams();
+        $teamManager = $this->get('teamManager');
+        $teams = $teamManager->getAllTeams();
 
         return $this->render('RockITTechgamesBundle:Team:overview.html.twig', array("teams" => $teams));
     }
