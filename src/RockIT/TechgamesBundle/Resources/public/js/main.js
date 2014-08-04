@@ -28,6 +28,36 @@ $(function() {
            
         }
     });
+    //adding fromt side valadtion to the game edit page ////////
+
+    $('#submitGameEdit').on('click', function() {
+        var errorMessageR = function(el, inputType, err) {
+            var error = $('.error', $(el).parent()[0]);
+            error.append('<span class=""> ' +' </span> '+ inputType + ' is ' + err + '.' + '<p>');
+            console.log(inputType + ' is ' + err + '.');
+        }
+
+        var isValid = true; 
+
+        // Clears the error div
+        $('.error').text('');
+
+        
+        var title = $("#gameTitle").val();
+        if (title == '') {
+            errorMessageR(this, "title", 'required');
+            isValid = false;
+        }
+
+        var description = $("#gameDescription").val();
+        if (description == '') {
+            errorMessageR(this, "Description", 'required');
+            isValid = false;
+            //return isValid;
+       
+        }   
+        return isValid;
+    });
 
 
 });

@@ -3,4 +3,72 @@
 {% block content %}
 
 <h1>Edit Game {{gameId}}</h1>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="leftNav">
+                <li><a href="//<?=APP_PATH?>/index.php/gameHome?t=gameHome&gameId=<?=$game->getId();?>">Game Home</a></li>
+                <li><a href="//<?=APP_PATH?>/index.php/gameHome?t=gameRegDetails&gameId=<?=$game->getId();?>">Registration Details</a></li>
+                <li><a href="//<?=APP_PATH?>/index.php/gameHome?t=gameDetails&gameId=<?=$game->getId();?>">Details</a></li>
+                <li><a href="//<?=APP_PATH?>/index.php/gameHome?t=gameSchedule&gameId=<?=$game->getId();?>">Schedule</a></li>
+                <li><a href="//<?=APP_PATH?>/index.php/gameHome?t=gameResults&gameId=<?=$game->getId();?>">Results</a></li>
+            </ul> 
+            <img src="" style="width:250px; height:250px; background-color:grey;display:block;">
+        
+    </div>
+    
+        <div class="col-md-8">
+            <form role="form">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                     <input type="text" class="form-control" id="gameTitle" name="title" value="">
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="text" class="form-control" id="image" name="image" value="">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea rows="6" cols="30" class="form-control" type="text" id="gameDescription" name="description"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label  for="sponsor">Sponsor</label>
+                    <input type="text" class="form-control" id="sponsor" name="sponsor" value="">
+                </div>
+
+                <div class="form-group">
+                    <label  for="supSponsors">Supporting Sponsors</label>
+                    <input type="text" class="form-control" id="supSponsors" name="supSponsors" value="">
+                </div>
+
+                <div class="form-group">
+                    <label for="owner">Game Owner</label> 
+                    <input type="text" class="form-control" id="owner" name="owner" value="">
+                </div>
+
+                <div class="form-group">
+                    <label for="judge">Judge</label>
+                    <input type="text" class="form-control" id="judge" name="judge" value="">
+                </div>
+
+        
+                <div class="saveChanges">
+                    <button type="submit" class="btn btn-default" id="submitGameEdit">Save</button>
+                    <span>or</span>
+                    <a href="" class="cancel">Cancel</a>
+                    <div class="error"></div>
+                </div>              
+            </form>
+        </div> 
+        
+    </div>
+</div>
 {% endblock %}
