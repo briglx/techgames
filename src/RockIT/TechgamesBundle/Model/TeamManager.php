@@ -9,12 +9,12 @@
 namespace RockIT\TechgamesBundle\Model;
 
 
-class TeamManager {
+
+class TeamManager{
 
     private $_items = array();
 
     private $_profileManager;
-
 
     public function __construct()
     {
@@ -44,6 +44,12 @@ class TeamManager {
     public function getTeam($teamId)
     {
         return $this->_items[$teamId];
+
+    }
+
+    public function getAllTeams()
+    {
+        return $this->_items;
 
     }
 

@@ -1,7 +1,7 @@
 Tech Games
 ========================
 
-Welcome to Avnet Techgames. Built by RockIT Bootcamp
+Welcome to Avnet Techgames. Built by RockIT Bootcamp and RockIT Labs
 
 1) Deploying
 ----------------------------------
