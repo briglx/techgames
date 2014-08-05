@@ -26,7 +26,7 @@ class GameController extends Controller
     {
         $game = $this->_gameManager->getGame($gameId);
 
-        print_r ($game);
+        
         
         return $this->render('RockITTechgamesBundle:Game:edit.html.twig', 
             array('game' => $game, 'gameId' => $gameId));

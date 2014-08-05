@@ -17,7 +17,7 @@
                 <li><a href="//<?=APP_PATH?>/index.php/gameHome?t=gameSchedule&gameId=<?=$game->getId();?>">Schedule</a></li>
                 <li><a href="//<?=APP_PATH?>/index.php/gameHome?t=gameResults&gameId=<?=$game->getId();?>">Results</a></li>
             </ul> 
-            <img src="" style="width:250px; height:250px; background-color:grey;display:block;">
+            <img src="{{game.getImage()}};" style="width:250px; height:250px; background-color:grey; display:block;">
         
     </div>
     
