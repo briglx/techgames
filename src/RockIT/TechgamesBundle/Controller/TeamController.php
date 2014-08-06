@@ -22,4 +22,11 @@ class TeamController extends Controller
 
         return $this->render('RockITTechgamesBundle:Team:overview.html.twig', array("teams" => $teams));
     }
-}
+    public function editAction($teamId)
+    {
+        $teamManager = $this->get('teamManager');
+        $team = $teamManager->getTeam($teamId);
+
+        return $this->render('RockITTechgamesBundle:Team:edit.html.twig', array("team" => $team, 'teamId' => $teamId));
+    }
+}  
