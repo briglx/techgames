@@ -10,3 +10,10 @@ services:
     class: RockIT\TechgamesBundle\Twig\Extension\AcmeExtension
     tags:
       - { name: twig.extension2 }
+  profileManager:
+     class: RockIT\TechgamesBundle\Model\ProfileManager
+  teamManager:
+    class: RockIT\TechgamesBundle\Model\TeamManager
+  gameManager:
+    class: RockIT\TechgamesBundle\Model\GameManager
+    arguments: ["@teamManager"]

@@ -91,6 +91,10 @@ class Team {
     }
 
 
+    public function addGame($game) {
+        array_push($this->_games, $game);
+    }
+
 
 
 

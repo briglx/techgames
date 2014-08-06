@@ -92,33 +92,6 @@ img.resize{
     font-weight: 100;
 }
 
-/*@media (min-width: 50px) {*/
-    /*.carousel-caption h1 {*/
-        /*font-size: 36px;*/
-    /*}*/
-
-    /*.carousel-caption .lead {*/
-        /*font-size: 24px;*/
-    /*}*/
-
-    /*.carousel-caption p {*/
-        /*font-size: 14px;*/
-    /*}*/
-/*}*/
-
-@media (min-width: 992px) {
-    .carousel-caption h1 {
-        font-size: 56px;
-    }
-
-    .carousel-caption .lead {
-        font-size: 27px;
-    }
-
-    .carousel-caption p {
-        font-size: 19px;
-    }
-}
 
 
 .container {
@@ -310,26 +283,123 @@ footer .sponsor img {
     max-height:100%;
 }
 
-@media (min-width: 768px){
+
+.carousel-inner .item img {
+    opacity: 0.3;
+}
+
+.carousel-caption {
+    left: 20%;
+    right: 20%;
+    padding-bottom: 30px;
+}
+
+@media (min-width: 400px){
     .carousel {
         margin-bottom: 5px;
         margin-left: -8px;
-        margin-right: 8px;
+        margin-right: -10px;
+    }
+}
+
+@media (min-width: 600px){
+    .carousel {
+        margin-bottom: 5px;
+        margin-left: -8px;
+        margin-right: -10px;
+    }
+}
+
+
+
+@media (min-width: 768px){
+
+    .carousel {
+        margin-bottom: 5px;
+        margin-left: -11px;
+        margin-right: 0px;
+    }
+
+    .carousel-inner .item img {
+
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        margin-top: -100px;
+    }
+
+
+    .carousel-caption h1 {
+        font-size: 52px;
+    }
+
+    .carousel-caption .lead {
+        font-size: 27px;
+    }
+
+    .carousel-caption p {
+        font-size: 19px;
+    }
+}
+
+@media (min-width: 992px){
+    .carousel-inner .item img {
+
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        margin-top: -100px;
+    }
+
+    .carousel {
+        margin-bottom: 5px;
+        margin-left: -8px;
+        margin-right: 0px;
+        
+    }
+}
+
+@media (min-width: 991px){
+    .carousel {
+        margin-bottom: 5px;
+        margin-left: -8px;
+        margin-right: 9px;
+    }
+
+    .carousel-caption h1 {
+        font-size: 56px;
+    }
+
+    .carousel-caption .lead {
+        font-size: 27px;
+    }
+
+    .carousel-caption p {
+        font-size: 19px;
     }
 }
 
 @media (min-width: 1200px){
+
+    .carousel-inner .item img {
+
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        margin-top: -200px;
+    }
+
     .carousel {
         margin-bottom: 5px;
         margin-left: -8px;
         margin-right: -8px;
     }
+
 }
 
 .carousel-caption p, .carousel-caption h1 {
     text-align: left;
 }
-
 
 .carousel-inner .item {
     background-color: #000;
@@ -338,13 +408,6 @@ footer .sponsor img {
     padding:0px;
     width:100%;
     overflow:hidden;
-}
-.carousel-inner .item img {
-    opacity: 0.5;
-    margin: 0px;
-    padding: 0px;
-    width: 100%;
-    margin-top: -200px;
 }
 
 .sp {
@@ -355,6 +418,12 @@ footer .sponsor img {
     overflow: hidden;
     text-align: center;
 
+}
+
+.sp img {
+
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .teams-row {

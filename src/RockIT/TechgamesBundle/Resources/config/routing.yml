@@ -10,6 +10,10 @@ rock_it_techgames_newsroom:
     pattern:  /newsroom
     defaults: { _controller: RockITTechgamesBundle:Default:newsroom }
 
+rock_it_techgames_anouncements:
+    pattern:  /announcements
+    defaults: { _controller: RockITTechgamesBundle:Default:announcements }
+
 game_detail:
     pattern:  /game/{gameId}
     defaults: { _controller: RockITTechgamesBundle:Game:detail }

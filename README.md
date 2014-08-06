@@ -1,13 +1,21 @@
 Tech Games
 ========================
 
-Welcome to Avnet Techgames. Built by RockIT Bootcamp
+Welcome to Avnet Techgames. Built by RockIT Bootcamp and RockIT Labs
 
 1) Deploying
 ----------------------------------
+You can run the script release.sh
+
+or
 
 1. Navigate to /usr/share/nginx/html/techgames
-2. get latest code with `git pull`
+2. get latest code with 
+
+    ````bash
+    $ sudo chown -R ubuntu:www-data .
+    git pull
+    ````
 3. Clear Cache
 
     ```bash
