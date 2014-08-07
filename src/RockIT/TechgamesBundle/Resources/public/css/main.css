@@ -114,10 +114,15 @@ img.resize{
     left: 0px;
     right: 0px;
     text-align: center;
-    background-color: rgba(0,0,0,0.5);
+
     margin: 0px;
     padding:0px;
     color: white;
+
+
+    background: rgba(0, 0, 0, 0.7); /* browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000', endColorstr='#99000000'); /* IE */
+
 }
 
 .gm img, .game-main img {
@@ -240,6 +245,19 @@ footer .container {
 }
 
 footer .container img {
+
+    /*IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+    /*IE 5-7*/
+    filter: alpha(opacity=50);
+
+    /*Netscape*/
+    -moz-opacity: 0.5;
+
+    /*Safari 1.x*/
+    -khtml-opacity: 0.5;
+
     opacity: 0.5;
     margin: 0px;
     padding: 0px;
@@ -285,8 +303,23 @@ footer .sponsor img {
 
 
 .carousel-inner .item img {
+     /*IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+
+     /*IE 5-7*/
+    filter: alpha(opacity=30);
+
+     /*Netscape*/
+    -moz-opacity: 0.3;
+
+     /*Safari 1.x*/
+    -khtml-opacity: 0.3;
+
+    /* Good browsers */
     opacity: 0.3;
 }
+
+
 
 .carousel-caption {
     left: 20%;
