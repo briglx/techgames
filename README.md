@@ -24,3 +24,82 @@ Welcome to Avnet Techgames. Built by RockIT Bootcamp and RockIT Labs
     ```bash
     $ sudo chown -R www-data:www-data .
     ```
+
+2) Gettings Started
+--
+You'll need to configure the TechGames project once you clone it into your local development environment.
+
+### Install Composer
+* Navigate to project folder /path/to/techgames
+* Install Composer
+
+````
+curl -sS https://getcomposer.org/installer | php
+````
+Then run 
+
+````
+php composer.phar install
+````
+
+This will install of the dependencies needed for the project
+
+Press enter to accept the defaults for the missing parameters
+
+### Set TimeZone 
+You'll need to set the timezone setting in your php.ini file. The easist way to know which file is used is to create a info.php file.
+
+````
+<?php
+
+phpinfo();
+
+?>
+````
+
+Load this file in the browswer. Look for the section *Configuration File (php.ini) File*.
+
+On my computer it is looking in /etc/ for a file called php.ini.
+
+However, you may not have that file there. Instead you may have a php.ini.default
+
+Copy this to php.ini
+
+````
+sudo cp /etc/php.ini.default /etc/php.ini
+````
+
+Edit the php.ini file
+
+```
+sudo vi /etc/php.ini
+```
+
+Look for the section for date.timezone
+
+```
+date.timezone = "America/Phoenix"
+```
+
+Restart apache
+
+````
+sudo apachectl restart
+````
+
+### Install Assets
+Navigate to techgames folder and run:
+````
+php app/console assets:install
+````
+### Set permissions on folders
+Change ownership on the cache and logs folders
+
+````
+sudo chown -R _www:_www app/cache
+sudo chown -R _www:_www app/logs
+````
+### Verify Site
+Open a browser and navigate `localhost/techgames/web/app_dev.php`
+
+
