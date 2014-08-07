@@ -43,6 +43,10 @@ team_detail:
     pattern:  /team/{teamId}
     defaults: { _controller: RockITTechgamesBundle:Team:detail }
 
+team_edit:
+    pattern:  /team/{teamId}/edit
+    defaults: { _controller: RockITTechgamesBundle:Team:edit }
+
 school_detail:
     pattern:  /school/{schoolId}
     defaults: { _controller: RockITTechgamesBundle:School:detail }

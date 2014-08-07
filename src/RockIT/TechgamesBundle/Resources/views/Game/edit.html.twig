@@ -11,11 +11,11 @@
     <div class="row">
         <div class="col-md-4">
             <ul class="leftNav">
-                <li><a href="//<?=APP_PATH?>/index.php/gameHome?t=gameHome&gameId=<?=$game->getId();?>">Game Home</a></li>
-                <li><a href="//<?=APP_PATH?>/index.php/gameHome?t=gameRegDetails&gameId=<?=$game->getId();?>">Registration Details</a></li>
-                <li><a href="//<?=APP_PATH?>/index.php/gameHome?t=gameDetails&gameId=<?=$game->getId();?>">Details</a></li>
-                <li><a href="//<?=APP_PATH?>/index.php/gameHome?t=gameSchedule&gameId=<?=$game->getId();?>">Schedule</a></li>
-                <li><a href="//<?=APP_PATH?>/index.php/gameHome?t=gameResults&gameId=<?=$game->getId();?>">Results</a></li>
+                <li><a href="{{path('game_edit', {'gameId':game.getGameId()})}}?t=gameHome">Game Home</a></li>
+                <li><a href="{{path('game_edit', {'gameId':game.getGameId()})}}?t=registrationDetails">Registration Details</a></li>
+                <li><a href="{{path('game_edit', {'gameId':game.getGameId()})}}?t=details">Details</a></li>
+                <li><a href="{{path('game_edit', {'gameId':game.getGameId()})}}?t=schedule">Schedule</a></li>
+                <li><a href="{{path('game_edit', {'gameId':game.getGameId()})}}?t=results">Results</a></li>
             </ul> 
             <img src="{{game.getImage()}};" style="width:250px; height:250px; background-color:grey; display:block;">
         
