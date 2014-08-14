@@ -13,8 +13,32 @@ class DefaultController extends Controller
         $gameManager = $this->get('gameManager');
         $games = $gameManager->getAllGames();
 
+        // Add games to offering years
+        $offeringYears = array();
+        foreach($games as $game)
+        {
+            $y = $game->getOfferingYear();
+
+            if (isset($offeringYears[$y])) {
+
+                # Append
+                array_push($offeringYears[$y], $game);
+            }
+            else
+            {
+                # Create new array and append
+                $offeringYears[$y] = array();
+                array_push($offeringYears[$y], $game);
+            }
+
+
+        }
+
+        asort($offeringYears);
+
+
         return $this->render('RockITTechgamesBundle:Default:index.html.twig',
-            array('games' => $games));
+            array('games' => $games, 'offeringYears' => $offeringYears));
     }
 
     public function aboutAction()
