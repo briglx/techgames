@@ -43,10 +43,12 @@
           </a>
         </div>
 
+        {% for key, offeringYear in offeringYears %}
           
         <div class="row">
+            <h1>{{ key }}</h1>
 
-            {% for game in games %}
+            {% for game in offeringYear %}
              
             <div class="col-6 col-sm-6 col-lg-4 gm gm-default" style="background-color: {{game.getColor()}}" >
                 <a href="{{path('game_detail', {'gameId':game.getGameId()})}}">
@@ -107,6 +109,7 @@
             {% endfor %}
 
           </div><!--/row-->
+        {% endfor %}
         </div><!--/span-->
       </div><!--/row-->
 {% endblock %}

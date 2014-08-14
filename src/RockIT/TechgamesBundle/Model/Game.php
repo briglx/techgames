@@ -6,6 +6,7 @@ class Game
 {
 
     private $_gameId;
+    private $_offeringYear;
     private $_shortTitle;
     private $_title;
     private $_image;
@@ -35,9 +36,10 @@ class Game
     private $_schedule;
     private $_dailyEvents;
 
-    public function __construct($gameId, $shortTitle, $title, $image, $icon, $color)
+    public function __construct($gameId, $offeringYear, $shortTitle, $title, $image, $icon, $color)
     {        
         $this->_gameId = $gameId;
+        $this->_offeringYear = $offeringYear;
         $this->_title = $title;
         $this->_shortTitle = $shortTitle;
         $this->_image = $image;
@@ -71,6 +73,16 @@ class Game
     public function getGameId()
     {
         return $this->_gameId;
+    }
+
+    public function getOfferingYear()
+    {
+        return $this->_offeringYear;
+    }
+
+    public function setOfferingYear($offeringYear)
+    {
+        $this->_offeringYear = $offeringYear;
     }
 
     public function getTitle()
