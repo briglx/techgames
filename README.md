@@ -102,4 +102,18 @@ sudo chown -R _www:_www app/logs
 ### Verify Site
 Open a browser and navigate `localhost/techgames/web/app_dev.php`
 
+3) Starting to Code
+----------------------------------
+Before you start to code. Be sure to create a branch for the work you'll do.
 
+1. First get the latest code
+    
+    ````
+    git pull
+    ````
+2. Create a branch to work on
+
+    ````
+    git branch <feature>
+    git checkout <feature>
+    ````
