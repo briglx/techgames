@@ -107,13 +107,13 @@ Open a browser and navigate `localhost/techgames/web/app_dev.php`
 Before you start to code. Be sure to create a branch for the work you'll do.
 
 1. First get the latest code
-    
+
     ````
     git pull
     ````
 2. Create a branch to work on
 
-    ````
-    git branch <feature>
-    git checkout <feature>
-    ````
+````
+git branch <feature>
+git checkout <feature>
+````
