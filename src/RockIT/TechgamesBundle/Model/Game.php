@@ -35,6 +35,7 @@ class Game
 
     private $_schedule;
     private $_dailyEvents;
+    private $_status; // prereg, active, inactive
 
     public function __construct($gameId, $offeringYear, $shortTitle, $title, $image, $icon, $color)
     {        
@@ -66,6 +67,7 @@ class Game
         $this->_grading = "<ul><li>25 pts - Donec Ullam</li><li>25 pts - Nulla non Metus</li><li>50 pts - Vestibulum id Ligula</li></ul>";
         $this->_awards = "Each team will receive $1000 scholarship";
         $this->_schedule = "SCHEDULE GOES HERE";
+        $this->_status = GameStatus::InActive;
 
     }
 
@@ -352,6 +354,23 @@ class Game
     {
         return $this->_dailyEvents;
     }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->_status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus($status)
+    {
+        $this->_status = $status;
+    }
+
 
 
    

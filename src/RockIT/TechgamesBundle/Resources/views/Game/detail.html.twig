@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="row">
+<div class="row g">
 
         <div class="col-sm-9 game-main">
 
@@ -13,7 +13,7 @@
 
           <div class="row">
               <div class="col-sm-4"  >
-                <div class="logo" style="background-color: {{game.getColor()}}">
+                <div class="g-logo" style="background-color: {{game.getColor()}}">
 
                   {% if game.getImage() == "" %}
 
@@ -28,8 +28,11 @@
 
               </div>
 
+
+
               <div class="col-sm-8">
-                  
+                  {# Check if game is in Active State (1) #}
+                  {% if game.getStatus() == 1  %}
                   <div class="reg">
                     <div class="reg-option">
                       <div>Seats open</div>
@@ -44,6 +47,7 @@
                       <div class="reg-value">{{game.getLocation()}}</div>
                     </div>
                   </div>
+                  {% endif %}
                   <p class="lead">{{game.getDescription()}}</p>
               </div>
           </div>
@@ -110,11 +114,12 @@
         </div><!-- /.game-main -->
 
         <div class="col-sm-3 game-sidebar">
-          
 
+          {% if game.getStatus() == 1 %}
           <div class="sidebar-module"> 
             <a class="btn btn-primary btn-lg btn-join" href="{{path('game_join', {'gameId':'1'})}}">Join Game</a>
           </div>
+          {% endif %}
           
           <div class="sidebar-module">
               {%  if game.getSponsor()|length > 0 %}
@@ -150,7 +155,12 @@
             {%  if game.getTeams()|length > 0 %}
             <ol class="list-unstyled">
               {% for key, team in game.getTeams() %}
-              <li><a href="{{path('team_detail', {'teamId':team.getTeamId()})}}">{{ team.getName() }} ({{ team.getMembers()|length }})</a></li>
+
+              <li>
+                  {% if team.getIsWinner() %}
+                      <i class="fa fa-trophy"></i>
+                  {% endif %}
+                  <a href="{{path('team_detail', {'teamId':team.getTeamId()})}}">{{ team.getName() }} ({{ team.getMembers()|length }})</a></li>
               {% endfor %}
             <ol>
             {%  else %}
