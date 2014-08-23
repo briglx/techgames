@@ -194,11 +194,28 @@ img.resize{
     border-bottom: 5px solid white;
 }
 
+footer .nav  img{
+    position: relative;
+    width:200px;
+    top:0px;
+
+}
+
+footer .navbar .navbar-right  li {
+    border:none;
+    margin-right: 0px;
+    padding:0px;
+    margin:0px;
+
+}
 
 .container {
     margin-top: 50px;
 }
 
+hr {
+    color: #575757;
+}
 
 .gm {
     sborder:20px solid white;
@@ -376,14 +393,13 @@ footer .container img {
 }
 
 footer .navbar {
-    background-color: #1592C3;
+
 }
 
 footer .navbar ul li {
     float: left;
     margin: 15px 15px 10px 0;
     padding-right: 15px;
-    text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
     border-right: 1px solid #3f6470;
     list-style: none;
@@ -392,7 +408,7 @@ footer .navbar ul li {
 footer .navbar a {
     font-size: 17px;
     font-weight: bold;
-    color: #fff;
+
 }
 footer .navbar a:hover {
     text-decoration: none;
