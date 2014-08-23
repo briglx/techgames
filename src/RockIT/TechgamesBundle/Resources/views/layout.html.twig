@@ -14,6 +14,8 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ asset('bundles/rockittechgames/css/bootstrap.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('bundles/rockittechgames/font-awesome-4.1.0/css/font-awesome.min.css') }}">
+
     <!-- Custom styles for this template -->
     <!-- <link href="{{ asset('bundles/rockittechgames/css/offcanvas.css') }}" rel="stylesheet"> -->
 
@@ -76,11 +78,13 @@
 
                     </ul>
 
+                    {%  if constant('RockIT\\TechgamesBundle\\Model\\SiteSettings::IsRegistrationOpen') == "True" %}
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Register</a></li>
                         <li><a href="#">Sign-in</a></li>
 
                     </ul>
+                    {% endif %}
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>

@@ -46,7 +46,14 @@
         {% for key, offeringYear in offeringYears %}
           
         <div class="row">
-            <h1>{{ key }}</h1>
+            {% if key == 2014 %}
+                <h1>Here's a look at our {{ key }} competition.</h1>
+            {% elseif key == 2015 %}
+                <h1>Upcomming {{ key }} competition</h1>
+            {% else %}
+                <h1>{{ key }}</h1>
+            {% endif %}
+
 
             {% for game in offeringYear %}
              
@@ -68,6 +75,8 @@
                 </a>
                 <div hidden class="data-content">
 
+                    {% if game.getStatus() == 0 %}
+
                     <div class="reg">
                       <div class="reg-option">
                         <div>Seats open</div>
@@ -82,8 +91,9 @@
                         <div class="reg-value">{{game.getLocation()}}</div>  
                       </div>
                     </div>
+                    {% endif %}
                     <p class="desc">{{game.getDescription()}}</p>
-                    {%  if game.getSchedule()|length > 0 %}
+                    {%  if game.getStatus() == 0 and game.getSchedule()|length > 0 %}
                     <table class="table">
                       <thead>
                         <tr>

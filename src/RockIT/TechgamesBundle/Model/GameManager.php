@@ -21,15 +21,16 @@ class GameManager
         $this->_profileManager = new ProfileManager();
         $this->_teamManager =  $teamManager;
 
-        $this->_items[1] = new Game(1, 2013, "Green Video", "Green Video Compitition","group.png", "", "");
-        $this->_items[2] = new Game(2, 2013, "Fastest Computer", "HP Build the Fastest Computer", "build.png", "", "");
-        $this->_items[3] = new Game(3, 2013, "Virtual Android","Virtual Android™ App Showdown", "", "signal", "#a0c53b");
-        $this->_items[4] = new Game(4, 2013, "Desktop Domination","Desktop Domination", "", "adjust", "#0e97c0");
-        $this->_items[5] = new Game(5, 2013, "Robot Race","Robot Race Obstacle Course", "robot.png", "", "");
-        $this->_items[6] = new Game(6, 2013, "Java Blitz","Java Blitz", "", "fire", "#cf7338");
-        $this->_items[7] = new Game(7, 2013, "Supply Chain","JDA Supply Chain Challenge", "", "refresh", "#c52f2b");
-        $this->_items[8] = new Game(8, 2013, "Cisco Networking Battle","Cisco Networking Expert Battle", "", "screenshot", "#3f6470");
-        $this->_items[9] = new Game(9, 2014, "Green Video", "Green Video Compitition","group.png", "", "");
+        $this->_items[1] = new Game(1, 2014, "Green Video", "Green Video Compitition","group.png", "", "");
+        $this->_items[2] = new Game(2, 2014, "Fastest Computer", "HP Build the Fastest Computer", "build.png", "", "");
+        $this->_items[3] = new Game(3, 2014, "Virtual Android","Virtual Android™ App Showdown", "", "signal", "#a0c53b");
+        $this->_items[4] = new Game(4, 2014, "Desktop Domination","Desktop Domination", "", "adjust", "#0e97c0");
+        $this->_items[5] = new Game(5, 2014, "Robot Race","Robot Race Obstacle Course", "robot.png", "", "");
+        $this->_items[6] = new Game(6, 2014, "Java Blitz","Java Blitz", "", "fire", "#cf7338");
+        $this->_items[7] = new Game(7, 2014, "Supply Chain","JDA Supply Chain Challenge", "", "refresh", "#c52f2b");
+        $this->_items[8] = new Game(8, 2014, "Cisco Networking Battle","Cisco Networking Expert Battle", "", "screenshot", "#3f6470");
+        $this->_items[9] = new Game(9, 2015, "Green Video", "Green Video Compitition","group.png", "", "");
+        $this->_items[10] = new Game(10, 2015, "Test Active Game", "Test Active Game Compitition","group.png", "", "");
 
         // Populate Event info for game
         foreach($this->_items as $item){
@@ -84,16 +85,29 @@ class GameManager
         $this->_items[1]->setGameOwner($this->_profileManager->getProfile(2));
         $this->_items[1]->setJudge($this->_profileManager->getProfile(3));
 
+        // Add Teams
         $teams = array();
-        array_push($teams, $this->_teamManager->getTeam(1));
+        array_push($teams,new GameTeam($this->_teamManager->getTeam(1)));
+        array_push($teams,new GameTeam($this->_teamManager->getTeam(2)));
+
+        $teams[0]->setIsWinner(True);
         $this->_items[1]->setTeams($teams);
         foreach($teams as $team){
             $team->addGame($this->_items[1]);
         }
 
+        // Add Stanby Teams
         $standbyTeams = array();
-        array_push($standbyTeams, $this->_teamManager->getTeam(3));
+        array_push($standbyTeams, new GameTeam($this->_teamManager->getTeam(3)));
         $this->_items[1]->setStandbyTeams($standbyTeams);
+
+
+        // Set state to pre-reg for game
+        $this->_items[9]->setStatus(GameStatus::PreRegistration);
+
+
+        // Set game as active
+        $this->_items[10]->setStatus(GameStatus::Active);
 
     }
 
