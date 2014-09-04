@@ -117,3 +117,4 @@ Before you start to code. Be sure to create a branch for the work you'll do.
 git branch <feature>
 git checkout <feature>
 ````
+4) Configure GIt
