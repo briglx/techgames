@@ -47,6 +47,13 @@ class TeamManager{
 
     }
 
+    public function getMyTeams($profileId)
+    {
+        $myTeams = array();
+        array_push($myTeams,  $this->_items[3]);
+        return $myTeams;
+    }
+
     public function getAllTeams()
     {
         return $this->_items;
