@@ -609,6 +609,10 @@ footer .sponsor img {
     display: block;
 }
 
+.team .members{
+    text-align: center;
+}
+
 /* enable absolute positioning */
 .inner-addon {
     position: relative;

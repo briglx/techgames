@@ -2,5 +2,78 @@
 
 {% block content %}
 
-<h1>Join Game {{gameId}}</h1>
+    <h1>Join - {{game.getTitle()}}</h1>
+
+    <h3>Current Registered Teams</h3>
+
+    <div class="row">
+
+    {% for key, team in game.getTeams() %}
+        <div class="col-6 col-sm-6 col-lg-4 team">
+            <div class=" panel panel-default">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title pull-left">{{ team.getName() }} </h3>
+                    <span class="pull-right"><button class="btn btn-default">Join</button></button></span>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-4">{{ team.getMembers()|length}} Members</div>
+                        <div class="col-xs-6 col-md-4">{{ team.getGames()|length}} Games</div>
+                    </div>
+                    <div class="row">
+                    {% for member in team.getMembers() %}
+                        <div class="col-xs-4 col-md-4 members">
+                            <a href="{{path('profile_detail', {'profileId':member.getProfileId()})}}"><img class="enter-block" data-src="{{ asset('bundles/rockittechgames/js/holder.js/90x90')}}" alt="90x90" class="img-rounded"></a>
+                            <small><a href="{{path('profile_detail', {'profileId':member.getProfileId()})}}">{{ member.getDisplayName() }}</a></small>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    {% endfor %}
+    </div>
+
+    <hr>
+
+
+
+    <div class="row teams-row">
+        <h3 class="pull-left">My Teams</h3>
+        <a type="button" class="btn btn-primary pull-right" href="{{path('team_create')}}">New Team</a>
+    </div>
+
+    <div class="row">
+
+        {% for key, team in myTeams %}
+            <div class="col-6 col-sm-6 col-lg-4 team">
+                <div class=" panel panel-default">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left">{{ team.getName() }} </h3>
+                        <span class="pull-right"><button class="btn btn-default">Register Team</button></button></span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-4">{{ team.getMembers()|length}} Members</div>
+                            <div class="col-xs-6 col-md-4">{{ team.getGames()|length}} Games</div>
+                        </div>
+                        <div class="row">
+                            {% for member in team.getMembers() %}
+                                <div class="col-xs-4 col-md-4 members">
+                                    <a href="{{path('profile_detail', {'profileId':member.getProfileId()})}}"><img class="enter-block" data-src="{{ asset('bundles/rockittechgames/js/holder.js/90x90')}}" alt="90x90" class="img-rounded"></a>
+                                    <small><a href="{{path('profile_detail', {'profileId':member.getProfileId()})}}">{{ member.getDisplayName() }}</a></small>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        {% endfor %}
+    </div>
+
+
 {% endblock %}

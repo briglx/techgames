@@ -39,6 +39,10 @@ profile_detail:
     pattern:  /profile/{profileId}
     defaults: { _controller: RockITTechgamesBundle:Profile:detail }
 
+team_create:
+    pattern:  /team/create
+    defaults: { _controller: RockITTechgamesBundle:Team:create }
+
 team_detail:
     pattern:  /team/{teamId}
     defaults: { _controller: RockITTechgamesBundle:Team:detail }
