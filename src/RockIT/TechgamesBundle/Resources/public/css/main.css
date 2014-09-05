@@ -209,6 +209,22 @@ footer .navbar .navbar-right  li {
 
 }
 
+footer .social ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+footer .social li{
+    list-style: none;
+    float: left;
+    margin: 15px 15px 10px 0;
+    padding-right: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+footer .social img {
+    width: 25px
+}
+
 .container {
     margin-top: 50px;
 }
