@@ -2,5 +2,37 @@
 
 {% block content %}
 
-<h1>Team {{teamId}}</h1>
+
+    <h1>Team {{team.getName()}}</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <ul class="leftNav">
+                    <li><a href="{{path('team_detail', {'teamId':team.getTeamId()})}}?t=teamHome">Team Home</a></li>
+                    <li><a href="{{path('team_detail', {'teamId':team.getTeamId()})}}?t=mambers">Mambers</a></li>
+                    <li><a href="{{path('team_detail', {'teamId':team.getTeamId()})}}?t=Games">Games</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-6">
+                <div>
+                    {{ team.getSchool() }}
+                </div>
+                <div class="row">
+                    {% for member in team.getMembers() %}
+                        <div class="p ol-md-6">
+                            <a href="{{path('profile_detail', {'profileId':member.getProfileId()})}}"><img class="enter-block" data-src="{{ asset('bundles/rockittechgames/js/holder.js/90x90')}}" alt="90x90" class="img-rounded"></a>
+                            <span ><a href="{{path('profile_detail', {'profileId':member.getProfileId()})}}">{{ member.getDisplayName() }}
+                                {% if member.getIsCoach() == "True" %}
+                                    <span>(Coach)</span>
+                                {%  endif %}
+                                </a>
+                            </span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

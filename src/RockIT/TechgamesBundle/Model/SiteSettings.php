@@ -13,5 +13,10 @@ abstract class SiteSettings {
 
     const  IsRegistrationOpen = "False";
 
+    // Represents the season
+    const CurrentSeason = 2015;
+
+    // Don't show current season games on home page because they are not ready yet
+    const HideCurrentSeasonGames = "True";
 
 } 

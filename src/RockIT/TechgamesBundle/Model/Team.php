@@ -15,6 +15,7 @@ class Team {
     private $_name;
     private $_members;
     private $_games;
+    private $_school;
 
     function __construct($teamId, $name)
     {
@@ -89,6 +90,23 @@ class Team {
     {
         $this->_games = $games;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSchool()
+    {
+        return $this->_school;
+    }
+
+    /**
+     * @param mixed $school
+     */
+    public function setSchool($school)
+    {
+        $this->_school = $school;
+    }
+
 
 
     public function addGame($game) {

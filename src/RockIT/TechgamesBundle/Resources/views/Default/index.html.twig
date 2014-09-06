@@ -44,6 +44,8 @@
         </div>
 
         {% for key, offeringYear in offeringYears %}
+
+        {%  if not (constant('RockIT\\TechgamesBundle\\Model\\SiteSettings::HideCurrentSeasonGames') == "True" and key == constant('RockIT\\TechgamesBundle\\Model\\SiteSettings::CurrentSeason')) %}
           
         <div class="row">
             {% if key == 2014 %}
@@ -119,6 +121,7 @@
             {% endfor %}
 
           </div><!--/row-->
+        {% endif %}
         {% endfor %}
         </div><!--/span-->
       </div><!--/row-->

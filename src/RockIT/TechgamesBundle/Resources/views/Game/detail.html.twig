@@ -7,7 +7,7 @@
         <div class="col-sm-9 game-main">
 
           <div class="game-header">
-        <h1 class="game-title">{{game.title}} <a class="btn btn-link btn-lg" rel="edit" href="{{path('game_edit', {'gameId':game.getGameId()})}}">Edit</a></h1>
+        <h1 class="game-title">{{game.title}} <small>{{ game.offeringYear }}</small> <a class="btn btn-link btn-lg" rel="edit" href="{{path('game_edit', {'gameId':game.getGameId()})}}">Edit</a></h1>
         
       </div>
 
