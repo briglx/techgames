@@ -13,3 +13,4 @@
 .DS_Store
 .idea/
 techgames.iml
+composer.lock
