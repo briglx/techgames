@@ -1,0 +1,19 @@
+{% extends 'RockITTechgamesBundle::layout.html.twig' %}
+
+{% block content %}
+
+
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">{{ error.message }}</div>
+        {% endif %}
+
+        <form class="form-signin" role="form" action="{{ path('login_check') }}" method="post">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <input id="username" name="_username" type="email" class="form-control" placeholder="Email address" required autofocus value="{{ last_username }}">
+            <input id="password" name="_password" type="password" class="form-control" placeholder="Password" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+
+
+{% endblock %}
