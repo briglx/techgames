@@ -14,3 +14,4 @@
 .idea/
 techgames.iml
 composer.lock
+*.php~
