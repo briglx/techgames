@@ -24,6 +24,10 @@ rock_it_techgames_anouncements:
     pattern:  /announcements
     defaults: { _controller: RockITTechgamesBundle:Default:announcements }
 
+game_new:
+    pattern:  /game/new
+    defaults: { _controller: RockITTechgamesBundle:Game:new }
+
 game_detail:
     pattern:  /game/{gameId}
     defaults: { _controller: RockITTechgamesBundle:Game:detail }

@@ -2,4 +2,26 @@
 
 {% block content %}
 <h1>Welcome Admin</h1>
+
+    <h3>Games</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        {% for game in games %}
+            <tr>
+                <td>{{ game.id }}</td>
+                <td>{{ game.title }}</td>
+                <td>{{ game.description }}</td>
+                <td><a href="{{path('game_edit', {'gameId':game.getId()})}}" class="btn btn-default">Edit</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
 {% endblock %}

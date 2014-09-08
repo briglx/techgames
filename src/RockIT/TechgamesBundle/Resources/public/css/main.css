@@ -675,6 +675,17 @@ footer .sponsor img {
     padding: 7px 9px;
 }
 
+.errorMsg ul {
+
+    padding:0;
+    display: block;
+    list-style-type: disc;
+    color: #a94442;
+}
+
+.errorMsg li {
+    list-style: none;
+}
 
 /*div {
     border: 1px solid #ccc;

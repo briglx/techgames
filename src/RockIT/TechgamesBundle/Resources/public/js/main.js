@@ -32,9 +32,11 @@ $(function() {
 
     $('#submitGameEdit').on('click', function() {
         var errorMessageR = function(el, inputType, err) {
-            var error = $('.error', $(el).parent()[0]);
-            error.append('<span class=""> ' +' </span> '+ inputType + ' is ' + err + '.' + '<p>');
-            console.log(inputType + ' is ' + err + '.');
+
+            var error = $('.errorMsg .error');
+
+            error.append('<li><span class="glyphicon glyphicon-exclamation-sign"></span> Please enter a valid ' + inputType + '.<span></span></li>');
+
         }
 
         var isValid = true; 
@@ -46,12 +48,15 @@ $(function() {
         var title = $("#gameTitle").val();
         if (title == '') {
             errorMessageR(this, "title", 'required');
+
+            $("#gameTitle").parent(".form-group").addClass("has-error");
             isValid = false;
         }
 
         var description = $("#gameDescription").val();
         if (description == '') {
             errorMessageR(this, "Description", 'required');
+            $("#gameDescription").parent(".form-group").addClass("has-error") ;
             isValid = false;
             //return isValid;
        
