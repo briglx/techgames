@@ -67,9 +67,9 @@ class GameController extends Controller
 
             }else{
 
-                $validations = array('title' => 'words', 'description' => 'anything', 'image' => 'anything');
-                $required = array('title', 'description');
-                $sanitize = array('title',  'description', 'image');
+                $validations = array('title' => 'words', 'shortTitle' => 'words', 'description' => 'anything', 'image' => 'anything');
+                $required = array('title', 'shortTitle', 'description');
+                $sanitize = array('title', 'shortTitle', 'color', 'icon', 'description', 'image');
                 $validator = new FormValidator($validations, $required, $sanitize);
 
             }
@@ -163,6 +163,7 @@ class GameController extends Controller
 
                 // Add Required fields
                 $game->setTitle($request->get("title"));
+                $game->setShortTitle($request->get("shortTitle"));
                 $game->setDescription($request->get("description"));
 
 
@@ -172,6 +173,20 @@ class GameController extends Controller
                 }
                 else{
                     $game->setImage("");
+                }
+
+                if($request->get("color")){
+                    $game->setColor($request->get("color"));
+                }
+                else{
+                    $game->setColor("");
+                }
+
+                if($request->get("icon")){
+                    $game->setIcon($request->get("icon"));
+                }
+                else{
+                    $game->setIcon("");
                 }
 
 

@@ -13,7 +13,7 @@
                 <li><a href="{{path('game_edit', {'gameId':game.getId()})}}?t=results">Results</a></li>
             </ul>
 
-            <div class="g-logo" style="background-color: {{game.getColor()}};width:262px; height:181px;">
+            <div class="g-logo" style="background-color: {{game.getColor()}};width:262px; height:175px;">
             {% if game.getImage() == "" %}
                 <i class="glyphicon glyphicon-{{game.getIcon()}}"></i>
             {% else %}
@@ -27,13 +27,34 @@
         <div class="col-md-8  main">
 
             <form class="form-horizontal" role="form" method="post">
+
                 <div class="form-group">
                     <label for="title" class="col-sm-2 control-label">Title</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="title" name="title" value="{{game.getTitle()}}">
                     </div>
                 </div>
-                
+
+                <div class="form-group">
+                    <label for="shortTitle" class="col-sm-2 control-label">Short Title</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="shortTitle" name="shortTitle" value="{{game.getShortTitle()}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="color" class="col-sm-2 control-label">Color</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="color" name="color" value="{{game.getColor()}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="icon" class="col-sm-2 control-label">Icon</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="icon" name="icon" value="{{game.getIcon()}}">
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="image" class="col-sm-2 control-label">Image</label>

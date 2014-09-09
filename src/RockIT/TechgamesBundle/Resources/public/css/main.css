@@ -335,6 +335,12 @@ hr {
     text-align: center;
 }
 
+.g .g-logo i {
+    padding-top: 29px;
+    font-size: 100px;
+    color: #fff;
+}
+
 *[hidden] { display: none; }
 
 .sidebar-module {

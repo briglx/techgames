@@ -60,7 +60,7 @@
             {% for game in offeringYear %}
              
             <div class="col-6 col-sm-6 col-lg-4 gm gm-default" style="background-color: {{game.getColor()}}" >
-                <a href="{{path('game_detail', {'gameId':game.getGameId()})}}">
+                <a href="{{path('game_detail', {'gameId':game.getId()})}}">
                     <h2 class="title">{{game.getShortTitle()}}</h2>
                     
                     {% if game.getImage() == "" %}

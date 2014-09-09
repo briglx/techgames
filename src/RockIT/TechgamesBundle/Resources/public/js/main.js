@@ -41,6 +41,9 @@ $(function() {
         if(!validateField("title", "words", true)){
             isValid = false;
         }
+        if(!validateField("shortTitle", "words", true)){
+            isValid = false;
+        }
         if(!validateField("description", "anything", true)){
             isValid = false;
         }
