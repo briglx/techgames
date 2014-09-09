@@ -71,7 +71,7 @@ class FormValidator
 
             foreach($items as $key=>$val)
             {
-                if((strlen($val) == 0 || array_search($key, $this->validations) === false) && array_search($key, $this->mandatories) === false)
+                if((strlen($val) == 0 || array_key_exists($key, $this->validations) === false) && array_search($key, $this->mandatories) === false)
                 {
                     $this->corrects[] = $key;
                     continue;

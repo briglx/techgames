@@ -259,7 +259,7 @@ hr {
 
 }
 
-.gm img, .game-main img {
+.gm img, .game-main img , .g img{
     width:100%;
 }
 
@@ -685,6 +685,23 @@ footer .sponsor img {
 
 .errorMsg li {
     list-style: none;
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+    margin-right: -21px; /* 20px padding + 1px border */
+    margin-bottom: 20px;
+    margin-left: -20px;
+}
+.nav-sidebar > li > a {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+    color: #fff;
+    background-color: #1592C3;
 }
 
 /*div {

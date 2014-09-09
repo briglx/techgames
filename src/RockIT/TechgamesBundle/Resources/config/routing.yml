@@ -32,6 +32,13 @@ game_detail:
     pattern:  /game/{gameId}
     defaults: { _controller: RockITTechgamesBundle:Game:detail }
 
+game_detail_reroute:
+    pattern:  /game/{gameId}/
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: game_detail
+      permanent: true
+
 game_edit:
     pattern:  /game/{gameId}/edit
     defaults: { _controller: RockITTechgamesBundle:Game:edit }

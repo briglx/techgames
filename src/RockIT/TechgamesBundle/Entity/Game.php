@@ -48,7 +48,7 @@ class Game {
         $this->equipment = "Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.";
         $this->grading = "<ul><li>25 pts - Donec Ullam</li><li>25 pts - Nulla non Metus</li><li>50 pts - Vestibulum id Ligula</li></ul>";
         $this->awards = "Each team will receive $1000 scholarship";
-        $this->schedule = "SCHEDULE GOES HERE";
+        $this->schedule = "";
         $this->status = GameStatus::InActive;
 
     }
@@ -619,5 +619,40 @@ class Game {
     public function getStatus()
     {
         return $this->status;
+    }
+
+    public function getSchedule()
+    {
+        return $this->schedule;
+    }
+
+    public function getSponsor()
+    {
+        return $this->sponsor;
+    }
+
+    public function getGameOwner()
+    {
+        return $this->gameOwner;
+    }
+
+    public function getJudge()
+    {
+        return $this->judge;
+    }
+
+    public function getTeams()
+    {
+        return $this->teams;
+    }
+
+    public function getStandbyTeams()
+    {
+        return $this->standbyTeams;
+    }
+
+    public function getDailySchedule()
+    {
+        return $this->schedule;
     }
 }
