@@ -259,7 +259,7 @@ hr {
 
 }
 
-.gm img, .game-main img {
+.gm img, .game-main img , .g img{
     width:100%;
 }
 
@@ -333,6 +333,12 @@ hr {
     z-index: 5;
     height: 181px;
     text-align: center;
+}
+
+.g .g-logo i {
+    padding-top: 29px;
+    font-size: 100px;
+    color: #fff;
 }
 
 *[hidden] { display: none; }
@@ -675,6 +681,34 @@ footer .sponsor img {
     padding: 7px 9px;
 }
 
+.errorMsg ul {
+
+    padding:0;
+    display: block;
+    list-style-type: disc;
+    color: #a94442;
+}
+
+.errorMsg li {
+    list-style: none;
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+    margin-right: -21px; /* 20px padding + 1px border */
+    margin-bottom: 20px;
+    margin-left: -20px;
+}
+.nav-sidebar > li > a {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+    color: #fff;
+    background-color: #1592C3;
+}
 
 /*div {
     border: 1px solid #ccc;

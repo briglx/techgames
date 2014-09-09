@@ -24,13 +24,28 @@ rock_it_techgames_anouncements:
     pattern:  /announcements
     defaults: { _controller: RockITTechgamesBundle:Default:announcements }
 
+game_new:
+    pattern:  /game/new
+    defaults: { _controller: RockITTechgamesBundle:Game:new }
+
 game_detail:
     pattern:  /game/{gameId}
     defaults: { _controller: RockITTechgamesBundle:Game:detail }
 
+game_detail_reroute:
+    pattern:  /game/{gameId}/
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: game_detail
+      permanent: true
+
 game_edit:
     pattern:  /game/{gameId}/edit
     defaults: { _controller: RockITTechgamesBundle:Game:edit }
+
+game_delete:
+    pattern:  /game/{gameId}/delete
+    defaults: { _controller: RockITTechgamesBundle:Game:delete }
 
 game_join:
     pattern:  /game/{gameId}/join

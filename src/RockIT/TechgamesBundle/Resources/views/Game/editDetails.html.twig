@@ -1,0 +1,94 @@
+{% extends 'RockITTechgamesBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <div class="row g">
+        <h1>Edit Game <small>{{ game.title }}</small></h1>
+        <hr>
+        <div class=" col-md-4 sidebar">
+            <ul class="nav nav-sidebar">
+                <li><a href="{{path('game_edit', {'gameId':game.getId()})}}?t=gameHome">Game Home</a></li>
+                <li><a href="{{path('game_edit', {'gameId':game.getId()})}}?t=registrationDetails">Registration Details</a></li>
+                <li class="active"><a href="{{path('game_edit', {'gameId':game.getId()})}}?t=details">Details</a></li>
+                <li><a href="{{path('game_edit', {'gameId':game.getId()})}}?t=schedule">Schedule</a></li>
+                <li><a href="{{path('game_edit', {'gameId':game.getId()})}}?t=results">Results</a></li>
+            </ul>
+
+            <div class="g-logo" style="background-color: {{game.getColor()}};width:262px; height:181px;">
+            {% if game.getImage() == "" %}
+                <i class="glyphicon glyphicon-{{game.getIcon()}}"></i>
+            {% else %}
+                <img src="{{ asset('bundles/rockittechgames/images/')  }}{{game.getImage()}}" alt="...">
+            {% endif %}
+            {#<img src="{{game.getImage()}};" style="width:250px; height:250px; background-color:grey; display:block;">#}
+            </div>
+
+        </div>
+    
+        <div class="col-md-8  main">
+            <h3>Details</h3>
+            <form class="form-horizontal" role="form" method="post" >
+                <div class="form-group">
+                    <label for="overview" class="col-sm-2 control-label">Overview</label>
+                    <div class="col-sm-10">
+                        <textarea rows="6" cols="30" class="form-control" type="text" id="overview" name="overview">{{game.getOverview()}}</textarea>
+                    </div>
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="skills" class="col-sm-2 control-label">Skills</label>
+                    <div class="col-sm-10">
+                        <textarea rows="6" cols="30" class="form-control" type="text" id="skills" name="skills">{{game.getSkills()}}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="scoring" class="col-sm-2 control-label">Scoring</label>
+                    <div class="col-sm-10">
+                        <textarea rows="6" cols="30" class="form-control" type="text" id="scoring" name="scoring">{{game.getScoring()}}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="parameters" class="col-sm-2 control-label">Parameters</label>
+                    <div class="col-sm-10">
+                        <textarea rows="6" cols="30" class="form-control" type="text" id="parameters" name="parameters">{{game.getParameters()}}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="equipment" class="col-sm-2 control-label">Equipment</label>
+                    <div class="col-sm-10">
+                        <textarea rows="6" cols="30" class="form-control" type="text" id="equipment" name="equipment">{{game.getEquipment()}}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="grading" class="col-sm-2 control-label">Grading</label>
+                    <div class="col-sm-10">
+                        <textarea rows="6" cols="30" class="form-control" type="text" id="grading" name="grading">{{game.getGrading()}}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="awards" class="col-sm-2 control-label">Awards</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="awards" name="awards" value="{{game.getAwards()}}">
+                    </div>
+                </div>
+
+
+
+                <div class="saveChanges pull-right">
+                    <button type="submit" class="btn btn-default" id="submitGameEdit">Save</button>
+                    <span>or</span>
+                    <a href="" class="cancel">Cancel</a>
+                    <div class="error"></div>
+                </div>              
+            </form>
+        </div> 
+        
+    </div>
+
+{% endblock %}

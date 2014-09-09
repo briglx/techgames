@@ -1,66 +1,114 @@
 {% extends 'RockITTechgamesBundle::layout.html.twig' %}
 
 {% block content %}
+    <div class="row g">
+        <h1>Edit Game <small>{{ game.title }}</small></h1>
+        <hr>
+        <div class=" col-md-4 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="{{path('game_edit', {'gameId':game.getId()})}}?t=gameHome">Game Home</a></li>
+                <li><a href="{{path('game_edit', {'gameId':game.getId()})}}?t=registrationDetails">Registration Details</a></li>
+                <li><a href="{{path('game_edit', {'gameId':game.getId()})}}?t=details">Details</a></li>
+                <li><a href="{{path('game_edit', {'gameId':game.getId()})}}?t=schedule">Schedule</a></li>
+                <li><a href="{{path('game_edit', {'gameId':game.getId()})}}?t=results">Results</a></li>
+            </ul>
 
-<h1>Edit Game {{gameId}}</h1>
+            <div class="g-logo" style="background-color: {{game.getColor()}};width:262px; height:175px;">
+            {% if game.getImage() == "" %}
+                <i class="glyphicon glyphicon-{{game.getIcon()}}"></i>
+            {% else %}
+                <img src="{{ asset('bundles/rockittechgames/images/')  }}{{game.getImage()}}" alt="...">
+            {% endif %}
+            {#<img src="{{game.getImage()}};" style="width:250px; height:250px; background-color:grey; display:block;">#}
+            </div>
 
-
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <ul class="leftNav">
-                <li><a href="{{path('game_edit', {'gameId':game.getGameId()})}}?t=gameHome">Game Home</a></li>
-                <li><a href="{{path('game_edit', {'gameId':game.getGameId()})}}?t=registrationDetails">Registration Details</a></li>
-                <li><a href="{{path('game_edit', {'gameId':game.getGameId()})}}?t=details">Details</a></li>
-                <li><a href="{{path('game_edit', {'gameId':game.getGameId()})}}?t=schedule">Schedule</a></li>
-                <li><a href="{{path('game_edit', {'gameId':game.getGameId()})}}?t=results">Results</a></li>
-            </ul> 
-            <img src="{{game.getImage()}};" style="width:250px; height:250px; background-color:grey; display:block;">
-        
-    </div>
+        </div>
     
-        <div class="col-md-8">
-            <form role="form">
+        <div class="col-md-8  main">
+
+            <form class="form-horizontal" role="form" method="post">
+
                 <div class="form-group">
-                    <label for="title">Title</label>
-                     <input type="text" class="form-control" id="gameTitle" name="title" value="{{game.getTitle()}}">
+                    <label for="title" class="col-sm-2 control-label">Title</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="title" name="title" value="{{game.getTitle()}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="shortTitle" class="col-sm-2 control-label">Short Title</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="shortTitle" name="shortTitle" value="{{game.getShortTitle()}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="color" class="col-sm-2 control-label">Color</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="color" name="color" value="{{game.getColor()}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="icon" class="col-sm-2 control-label">Icon</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="icon" name="icon" value="{{game.getIcon()}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="image" class="col-sm-2 control-label">Image</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="image" name="image" value="{{game.getImage()}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-10">
+                        <textarea rows="6" cols="30" class="form-control" type="text" id="description" name="description">{{game.getDescription()}}</textarea>
+                    </div>
                 </div>
                 
-
                 <div class="form-group">
-                    <label for="image">Image</label>
-                    <input type="text" class="form-control" id="image" name="image" value="">
+                    <label  for="sponsor" class="col-sm-2 control-label">Sponsor</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="sponsor" name="sponsor" value="">
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea rows="6" cols="30" class="form-control" type="text" id="gameDescription" name="description" value="{{game.getDescription()}}"></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label  for="sponsor">Sponsor</label>
-                    <input type="text" class="form-control" id="sponsor" name="sponsor" value="">
+                    <label  for="supSponsors" class="col-sm-2 control-label">Supporting Sponsors</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="supSponsors" name="supSponsors" value="">
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label  for="supSponsors">Supporting Sponsors</label>
-                    <input type="text" class="form-control" id="supSponsors" name="supSponsors" value="">
+                    <label for="owner" class="col-sm-2 control-label">Game Owner</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="owner" name="owner" value="">
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="owner">Game Owner</label> 
-                    <input type="text" class="form-control" id="owner" name="owner" value="">
+                    <label for="judge" class="col-sm-2 control-label">Judge</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="judge" name="judge" value="">
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="judge">Judge</label>
-                    <input type="text" class="form-control" id="judge" name="judge" value="">
+                <div class="errorMsg">
+                    <ul class="error col-sm-10 col-sm-offset-2">
+                    {% if errors %}
+                    {% for invalidField, error in errors %}
+                        <li ><span class="glyphicon glyphicon-exclamation-sign"></span> Please enter a valid {{ invalidField}}.</li>
+                    {% endfor %}
+                    {% endif %}
+                    </ul>
                 </div>
-
         
-                <div class="saveChanges">
+                <div class="saveChanges pull-right">
                     <button type="submit" class="btn btn-default" id="submitGameEdit">Save</button>
                     <span>or</span>
                     <a href="" class="cancel">Cancel</a>
@@ -70,5 +118,19 @@
         </div> 
         
     </div>
-</div>
+
+
+
+{% endblock %}
+
+{% block afterScripts %}
+
+    <script>
+        $(function() {
+            {% for invalidField, error in errors %}
+            $('#{{ invalidField}}').parents(".form-group").addClass("has-error");
+            {% endfor %}
+        });
+    </script>
+
 {% endblock %}

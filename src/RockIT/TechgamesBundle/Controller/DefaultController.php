@@ -10,8 +10,12 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-        $gameManager = $this->get('gameManager');
-        $games = $gameManager->getAllGames();
+//        $gameManager = $this->get('gameManager');
+//        $games = $gameManager->getAllGames();
+
+        $games = $this->getDoctrine()
+            ->getRepository('RockITTechgamesBundle:Game')
+            ->findAll();
 
         // Add games to offering years
         $offeringYears = array();

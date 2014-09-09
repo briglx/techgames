@@ -1,0 +1,66 @@
+{% extends 'RockITTechgamesBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <h1>New Game </h1>
+
+    <div class="container">
+        <div class="row">
+
+
+
+
+            <div class="col-md-8">
+
+                <form role="form" method="post">
+
+
+
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        {% if title %}
+                            <input type="text" class="form-control" id="gameTitle" name="title" value="{{ title }}" placeholder="Title">
+                        {% else %}
+                            <input type="text" class="form-control" id="gameTitle" name="title" value="" placeholder="Title">
+                        {% endif %}
+                    </div>
+
+
+
+
+
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        {% if description %}
+                            <textarea rows="6" cols="30" class="form-control" type="text" id="gameDescription" name="description" placeholder="Description">{{ description }}</textarea>
+                        {% else %}
+                            <textarea rows="6" cols="30" class="form-control" type="text" id="gameDescription" name="description"  placeholder="Description"></textarea>
+                        {% endif %}
+                    </div>
+
+
+
+                    {% if errors %}
+                        <div class="errorMsg">
+                        <ul class="error">
+                        {% for invalidField, error in errors %}
+                            <li ><span class="glyphicon glyphicon-exclamation-sign"></span> Please enter a valid {{ invalidField}}.</li>
+                        {% endfor %}
+                        </ul>
+                        </div>
+                    {% endif %}
+
+
+                    <div class="saveChanges">
+                        <button type="submit" class="btn btn-default" id="submitGameEdit">Save</button>
+                        <span>or</span>
+                        <a href="" class="cancel">Cancel</a>
+                        <div class="serror"></div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

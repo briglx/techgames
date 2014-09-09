@@ -38,3 +38,6 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/game/\d+/edit, roles: ROLE_ADMIN }
+        - { path: ^/game/\d+/delete, roles: ROLE_ADMIN }
+        - { path: ^/game/new, roles: ROLE_ADMIN }
