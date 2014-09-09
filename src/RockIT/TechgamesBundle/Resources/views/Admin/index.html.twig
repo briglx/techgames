@@ -18,10 +18,14 @@
                 <td>{{ game.id }}</td>
                 <td>{{ game.title }}</td>
                 <td>{{ game.description }}</td>
-                <td><a href="{{path('game_edit', {'gameId':game.getId()})}}" class="btn btn-default">Edit</a></td>
+                <td>
+                    <a href="{{path('game_edit', {'gameId':game.getId()})}}" class="btn btn-default">Edit</a>
+                    <a href="{{path('game_delete', {'gameId':game.getId()})}}" class="btn btn-danger">Delete</a>
+                </td>
             </tr>
         {% endfor %}
     </table>
+    <a href="{{path('game_new')}}" class="btn btn-primary">New Game</a>
 
 
 {% endblock %}

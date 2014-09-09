@@ -39,6 +39,30 @@ class GameController extends Controller
 
     }
 
+    public function deleteAction($gameId)
+    {
+//        $gameManager = $this->get('gameManager');
+//        $game = $gameManager->getGame($gameId);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $game = $this->getDoctrine()
+            ->getRepository('RockITTechgamesBundle:Game')
+            ->findOneById($gameId);
+
+        if (!$game) {
+            throw $this->createNotFoundException('The game does not exist');
+        }
+        else {
+            $em->remove($game);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('admin_overview'));
+
+
+    }
+
     public function newAction()
     {
         $errors = [];

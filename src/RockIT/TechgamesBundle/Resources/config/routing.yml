@@ -36,6 +36,10 @@ game_edit:
     pattern:  /game/{gameId}/edit
     defaults: { _controller: RockITTechgamesBundle:Game:edit }
 
+game_delete:
+    pattern:  /game/{gameId}/delete
+    defaults: { _controller: RockITTechgamesBundle:Game:delete }
+
 game_join:
     pattern:  /game/{gameId}/join
     defaults: { _controller: RockITTechgamesBundle:Game:join }

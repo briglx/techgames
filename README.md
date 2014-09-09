@@ -3,6 +3,50 @@ Tech Games
 
 Welcome to Avnet Techgames. Built by RockIT Bootcamp and RockIT Labs
 
+General
+---
+Images to tech games. [http://avnetcorpphotos.smugmug.com/ATG/ATG-2014](http://avnetcorpphotos.smugmug.com/ATG/ATG-2014)
+
+
+Database
+----
+Production MySQL
+Username/password found on server in app/config/parameters.yml
+
+1. Create Symfony database
+
+	```
+	php app/console doctrine:database:create
+	
+	or 
+	
+	mysql> create database symfony;
+	```
+2. Create Getter and Setter on Entity Classes
+
+	```
+	php app/console doctrine:generate:entities RockIT/TechgamesBundle/Entity
+	```
+3. Generate Update SQL
+
+	```
+	php app/console doctrine:schema:update --dump-sql
+	```
+4. Add default data
+
+	```
+	mysql> INSERT INTO techgames_users (username, password, email, is_active) VALUES ('brig', '$2a$12$Q7lPC0afZtiy7fBiXOFXveIRHQ8I99JRlCseOsR4mj/aKsWS6M', 'brig@apollo.edu', 1);
+	
+	mysql> INSERT INTO techgames_role (name, role) VALUES ('admin', 'ROLE_ADMIN');
+INSERT INTO techgames_role (name, role) VALUES ('user', 'ROLE_USER');
+
+	mysql> INSERT INTO user_role (user_id, role_id) VALUES (1,1);
+	```
+
+
+
+
+
 1) Deploying
 ----------------------------------
 
@@ -10,18 +54,18 @@ Welcome to Avnet Techgames. Built by RockIT Bootcamp and RockIT Labs
 2. get latest code with `git pull`
 3. Clear Cache
 
-    ```bash
+    ``` 
     $ php app/console cache:clear --env=prod --no-debug
     ```
 4. Update resources
 
-    ```bash
+    ```
     $ php app/console assets:install
     ```
     
 5. Change ownership
 
-    ```bash
+    ```
     $ sudo chown -R www-data:www-data .
     ```
 
