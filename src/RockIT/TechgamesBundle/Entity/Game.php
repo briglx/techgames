@@ -139,7 +139,7 @@ class Game {
     private $skills;
 
     /**
-     * @ORM\Column(name="scoring", type="string")
+     * @ORM\Column(name="scoring", type="text")
      */
     private $scoring;
 
