@@ -45,7 +45,7 @@
 
         {% for key, offeringYear in offeringYears %}
 
-        {%  if not (constant('RockIT\\TechgamesBundle\\Model\\SiteSettings::HideCurrentSeasonGames') == "True" and key == constant('RockIT\\TechgamesBundle\\Model\\SiteSettings::CurrentSeason')) %}
+        {%  if not (siteSettings.hideCurrentSeasonGames == "True" and key == siteSettings.currentSeason) %}
           
         <div class="row">
             {% if key == 2014 %}

@@ -17,3 +17,6 @@ services:
   gameManager:
     class: RockIT\TechgamesBundle\Model\GameManager
     arguments: ["@teamManager"]
+  siteSettings:
+    class: RockIT\TechgamesBundle\Model\SiteSettings
+    arguments: ["%isRegistrationOpen%"]
