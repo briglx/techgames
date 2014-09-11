@@ -7,7 +7,7 @@
         <div class="col-sm-9 game-main">
 
           <div class="game-header">
-        <h1 class="game-title">{{game.title}} <small>{{ game.offeringYear }}</small> <a class="btn btn-link btn-lg" rel="edit" href="{{path('game_edit', {'gameId':game.getId()})}}">Edit</a></h1>
+        <h1 class="game-title">{{game.title}} <small>{{ game.offeringYear }}</small></h1>
         
       </div>
 
@@ -51,6 +51,8 @@
                   <p class="lead">{{game.getDescription() | raw}}</p>
               </div>
           </div>
+
+          {%  if siteSettings.isRegistrationOpen == "True" %}
           
           <div class="row">
             {%  if game.getSchedule()|length > 0 %}
@@ -110,8 +112,12 @@
             {%  endif %}
 
           </div>
+            {% endif %}
 
         </div><!-- /.game-main -->
+
+
+        {%  if siteSettings.isRegistrationOpen == "True" %}
 
         <div class="col-sm-3 game-sidebar">
 
@@ -179,6 +185,8 @@
           </div>
           {%  endif %}
         </div><!-- /.game-sidebar -->
+
+        {% endif %}
 
       </div><!-- /.row -->
 
