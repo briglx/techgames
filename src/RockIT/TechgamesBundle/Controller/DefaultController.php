@@ -3,15 +3,15 @@
 namespace RockIT\TechgamesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use RockIT\TechgamesBundle\Model\GameManager;
+use RockIT\TechgamesBundle\Model\SiteSettings;
 
 class DefaultController extends Controller
 {
 
     public function indexAction()
     {
-//        $gameManager = $this->get('gameManager');
-//        $games = $gameManager->getAllGames();
+        $siteSettings = $this->get('siteSettings');
+
 
         $games = $this->getDoctrine()
             ->getRepository('RockITTechgamesBundle:Game')
@@ -42,22 +42,25 @@ class DefaultController extends Controller
 
 
         return $this->render('RockITTechgamesBundle:Default:index.html.twig',
-            array('games' => $games, 'offeringYears' => $offeringYears));
+            array('games' => $games, 'offeringYears' => $offeringYears, 'siteSettings' => $siteSettings));
     }
 
     public function aboutAction()
     {
-        return $this->render('RockITTechgamesBundle:Default:about.html.twig');
+        $siteSettings = $this->get('siteSettings');
+        return $this->render('RockITTechgamesBundle:Default:about.html.twig',  array('siteSettings' => $siteSettings));
     }
 
     public function newsRoomAction()
     {
-        return $this->render('RockITTechgamesBundle:Default:newsroom.html.twig');
+        $siteSettings = $this->get('siteSettings');
+        return $this->render('RockITTechgamesBundle:Default:newsroom.html.twig',  array('siteSettings' => $siteSettings));
     }
 
     public function announcementsAction()
     {
-        return $this->render('RockITTechgamesBundle:Default:announcements.html.twig');
+        $siteSettings = $this->get('siteSettings');
+        return $this->render('RockITTechgamesBundle:Default:announcements.html.twig',  array('siteSettings' => $siteSettings));
     }
 
 }

@@ -11,11 +11,13 @@ namespace RockIT\TechgamesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use RockIT\TechgamesBundle\Model\SiteSettings;
 
 class SecurityController extends Controller{
 
     public function loginAction(Request $request)
     {
+        $siteSettings = $this->get('siteSettings');
         $session = $request->getSession();
 
         // get the login error if there is one
@@ -38,6 +40,7 @@ class SecurityController extends Controller{
             array(
                 'last_username' => $lastUsername,
                 'error'         => $error,
+                 'siteSettings' => $siteSettings
             )
         );
 
