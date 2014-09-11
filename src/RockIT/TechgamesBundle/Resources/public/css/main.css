@@ -710,6 +710,10 @@ footer .sponsor img {
     background-color: #1592C3;
 }
 
+.main-container{
+    min-height:600px;
+}
+
 /*div {
     border: 1px solid #ccc;
     padding: 1px;
