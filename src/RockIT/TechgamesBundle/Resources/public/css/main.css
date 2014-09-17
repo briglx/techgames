@@ -90,13 +90,13 @@ img.resize{
     bottom:0px;
     right: 0px;
     left: 0px;
-    background: #1592C3;
-    sbackground: rgba(21, 146, 195, 0.8);
+
+    background: rgba(21, 146, 195, 0.8);
     border-radius: 0px;
     border: none;
     z-index: 5;
     -moz-opacity: 0.80;
-    opacity:.80;
+    sopacity:.80;
     filter: alpha(opacity=80);
 }
 
@@ -124,6 +124,12 @@ img.resize{
     display: none;
 }
 
+.dropdown-menu .navbar-form a {
+    font-size: 1em;
+    font-weight: normal;
+    color:#428bca;
+}
+
 
 @media (min-width: 768px){
 
@@ -149,7 +155,7 @@ img.resize{
     }
 
     .navbar-collapse{
-        background-color:#1592C3;
+        background-color:transparent;
 
     }
 
@@ -203,7 +209,6 @@ img.resize{
     }
 
     .navbar a {
-
         color: white;
         font-size: 2.5em;
         font-weight: 100;
@@ -214,6 +219,19 @@ img.resize{
     .navbar a .txt {
         margin-left:2em;
         font-size: 25px;
+    }
+
+
+
+    .navbar-form .form-group{
+        margin-bottom: 10px;
+    }
+
+    .dropdown-menu{
+        width: 300px;
+    }
+    .navbar-nav  .form-group{
+        width:100%;
     }
 }
 
@@ -556,6 +574,9 @@ footer .sponsor img {
 }
 
 
+.carousel{
+    z-index: -1;
+}
 
 .carousel-caption {
     left: 20%;
@@ -587,6 +608,7 @@ footer .sponsor img {
         margin-bottom: 5px;
         margin-left: -11px;
         margin-right: 0px;
+
     }
 
     .carousel-inner .item img {
