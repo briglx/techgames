@@ -107,19 +107,7 @@ img.resize{
     background-color:#e6e6e6;
 }
 
-.navbar .btn {
 
-    color: white;
-    font-size: 2.5em;
-    font-weight: 100;
-    background:  none;
-}
-
-
-.navbar .btn .txt {
-    margin-left:2em;
-    font-size: 25px;
-}
 
 /* Default settings */
 .navbar-title {
@@ -212,6 +200,20 @@ img.resize{
         left:45px;
         z-index: 10;
 
+    }
+
+    .navbar a {
+
+        color: white;
+        font-size: 2.5em;
+        font-weight: 100;
+        background:  none;
+    }
+
+
+    .navbar a .txt {
+        margin-left:2em;
+        font-size: 25px;
     }
 }
 
