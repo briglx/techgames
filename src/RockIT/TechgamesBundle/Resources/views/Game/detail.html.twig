@@ -13,18 +13,19 @@
 
           <div class="row">
               <div class="col-sm-4"  >
-                <div class="g-logo" style="background-color: {{game.getColor()}}">
-
-                  {% if game.getImage() == "" %}
-
+              {% if game.getImage() == "" %}
+                <div class="stretchy-wrapper">
+                    <div class="g-logo" style="background-color: {{game.getColor()}};">
                       <i class="glyphicon glyphicon-{{game.getIcon()}}"></i>
-
-                  {% else %}
-
-                      <img src="{{ asset('bundles/rockittechgames/images/')  }}{{game.getImage()}}" alt="...">
-
-                  {% endif %}
+                    </div>
                 </div>
+
+              {% else %}
+                <div class="g-logo" style="background-color: {{game.getColor()}};">
+                    <img class="img-responsive" src="{{ asset('bundles/rockittechgames/images/')  }}{{game.getImage()}}" alt="...">
+                </div>
+              {% endif %}
+
 
               </div>
 

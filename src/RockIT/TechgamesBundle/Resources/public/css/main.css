@@ -327,11 +327,11 @@ hr {
 
 .g .g-logo {
     sposition: absolute;
-    top:0px;
-    right:0px;
-    left:0px;
-    z-index: 5;
-    height: 181px;
+    sstop:0px;
+    sright:0px;
+    sleft:0px;
+    sz-index: 5;
+    /*sheight: 181px;     remove because game detail showed color peeking out behind image*/
     text-align: center;
 }
 
@@ -339,6 +339,22 @@ hr {
     padding-top: 29px;
     font-size: 100px;
     color: #fff;
+}
+
+@media (min-width: 768px){
+    .g .g-logo i {
+        padding-top: 29px;
+        font-size: 50px;
+        color: #fff;
+    }
+}
+
+@media (min-width: 992px){
+    .g .g-logo i {
+        padding-top: 29px;
+        font-size: 100px;
+        color: #fff;
+    }
 }
 
 *[hidden] { display: none; }
@@ -712,6 +728,25 @@ footer .sponsor img {
 
 .main-container{
     min-height:600px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+div.stretchy-wrapper {
+    width: 100%;
+    padding-bottom: 66%;
+}
+
+div.stretchy-wrapper {
+    position: relative;
+}
+
+div.stretchy-wrapper > div {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
 }
 
 /*div {
