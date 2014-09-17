@@ -45,7 +45,7 @@
 
         <img class="logo" src="{{ asset('bundles/rockittechgames/images/AVNET-INC-sRGB-150x53px.jpg') }}" />
         <img class="grad" src="{{ asset('bundles/rockittechgames/images/gradient.png') }}" />
-        <img class="resize" src="{{ asset('bundles/rockittechgames/images/man-medium-straight.png') }}" />
+        <img class="resize runningman" src="{{ asset('bundles/rockittechgames/images/man-medium-straight.png') }}" />
 
 
         <nav class="navbar navbar-default" role="navigation">
@@ -63,7 +63,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active">
+                        <li>
                             <a href="{{path('rock_it_techgames_about')}}" class="btn btn-link btn-lg ">
                             <img src="{{ asset("bundles/rockittechgames/images/AboutAvnet_white_sRGB.png") }}" alt="about">
                             <span class="txt">About</span>
@@ -89,42 +89,10 @@
             </div><!-- /.container-fluid -->
         </nav>
 
-        {#<div class="navbar navbar-row">#}
-            {#<div>#}
-                {#<a href="{{path('rock_it_techgames_about')}}" class="btn btn-link btn-lg ">#}
-                  {#<img src="{{ asset("bundles/rockittechgames/images/AboutAvnet_white_sRGB.png") }}" alt="about">#}
-                  {#<span class="txt">About</span>#}
-                {#</a>#}
-
-                {#<a href="{{path('rock_it_techgames_anouncements')}}" class="btn btn-link btn-lg">#}
-                  {#<img src="{{ asset("bundles/rockittechgames/images/AV_Publication_white_RGB.png") }}" alt="about">#}
-                  {#<span class="txt">News</span>#}
-                {#</a>#}
-
-
-            {#</div>#}
-            {#<ul class="nav navbar-nav navbar-right">#}
-                {#<li><a href="#">Link</a></li>#}
-                {#<li class="dropdown">#}
-                    {#<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>#}
-                    {#<ul class="dropdown-menu" role="menu">#}
-                        {#<li><a href="#">Action</a></li>#}
-                        {#<li><a href="#">Another action</a></li>#}
-                        {#<li><a href="#">Something else here</a></li>#}
-                        {#<li class="divider"></li>#}
-                        {#<li><a href="#">Separated link</a></li>#}
-                    {#</ul>#}
-                {#</li>#}
-            {#</ul>#}
-           {#<!--  <div>#}
-                {#<a type="button" class="btn btn-default btn-lg">#}
-                  {#<i class="glyphicon glyphicon-login"></i><span class="txt">Login</span>#}
-                {#</a>#}
-            {#</div> -->#}
-
-        {#</div>#}
-
     </div>
+
+
+
     
     <div class="container main-container">
         {% block content %}{% endblock %}
@@ -193,10 +161,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{{ asset('bundles/rockittechgames/js/jquery-1.11.1.min.js')}}"></script>
-    <script src="{{ asset('bundles/rockittechgames/js/bootstrap.min.js')}}"></script>
-    <script src="{{ asset('bundles/rockittechgames/js/holder.js')}}"></script>
-
+    <script src="{{ asset('bundles/rockittechgames/js/jquery-2.1.1.min.js')}}"></script>
 
     <script type="text/javascript" src="{{ asset('bundles/rockittechgames/js/tinymce/tinymce.min.js')}}"></script>
     <script type="text/javascript">
@@ -213,6 +178,8 @@
     </script>
 
     <script src="{{ asset('bundles/rockittechgames/js/main.js')}}"></script>
+    <script src="{{ asset('bundles/rockittechgames/js/bootstrap.min.js')}}"></script>
+
 
     <!--<script src="offcanvas.js"></script>-->
     {% block afterScripts %}{% endblock %}
