@@ -74,6 +74,14 @@
                                 <span class="txt">News</span>
                             </a>
                         </li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <a href="{{path('admin_overview')}}" class="">
+                                <img src="{{ asset("bundles/rockittechgames/images/Expert_white_RGB.png") }}" alt="admin">
+                                <span class="txt">Admin</span>
+                            </a>
+                        </li>
+                        {% endif %}
 
                     </ul>
 

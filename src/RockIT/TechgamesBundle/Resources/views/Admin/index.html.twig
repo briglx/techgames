@@ -3,29 +3,47 @@
 {% block content %}
 <h1>Welcome Admin</h1>
 
-    <h3>Games</h3>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>&nbsp;</th>
-        </tr>
-        </thead>
-        {% for game in games %}
-            <tr>
-                <td>{{ game.id }}</td>
-                <td>{{ game.title }}</td>
-                <td>{{ game.description }}</td>
-                <td>
-                    <a href="{{path('game_edit', {'gameId':game.getId()})}}" class="btn btn-default">Edit</a>
-                    <a href="{{path('game_delete', {'gameId':game.getId()})}}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    <a href="{{path('game_new')}}" class="btn btn-primary">New Game</a>
+    <div class="row">
+        <div class=" col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li ><a href="#">Overview</a></li>
+                <li class="active"><a href="#">Games</a></li>
+                <li><a href="#">Users</a></li>
+                <li><a href="#">Teams</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10  main">
+            <h3>Games</h3>
+            <a href="{{path('game_new')}}" class="btn btn-primary pull-right">New Game</a>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                {% for game in games %}
+                    <tr>
+                        <td>{{ game.id }}</td>
+                        <td>{{ game.title }}</td>
+                        <td>{{ game.description }}</td>
+                        <td>
+                            <a href="{{path('game_edit', {'gameId':game.getId()})}}" class="btn btn-default">Edit</a>
+                        </td>
+                        <td>
+                            <a href="{{path('game_delete', {'gameId':game.getId()})}}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+
+
 
 
 {% endblock %}
