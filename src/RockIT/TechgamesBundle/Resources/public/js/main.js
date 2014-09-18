@@ -63,6 +63,17 @@ $(function() {
         return isValid;
     });
 
+
+
+    $('form.register button').on('click', function() {
+
+        var isValid = true;
+
+        return isValid;
+
+    });
+
+
     function errorMessageR(el, inputType, err) {
 
         var error = $('.errorMsg .error');

@@ -766,8 +766,8 @@ footer .sponsor img {
 .right-addon input { padding-right: 30px; }
 
 
-.form-signin {
-    max-width: 300px;
+.form-signin, form.register {
+    smax-width: 300px;
     padding: 19px 29px 29px;
     margin: 0 auto 20px;
     background-color: #fff;
@@ -789,6 +789,10 @@ footer .sponsor img {
     height: auto;
     margin-bottom: 15px;
     padding: 7px 9px;
+}
+
+.form-signin input, form.register input{
+    margin-bottom: 10px;
 }
 
 .errorMsg ul {

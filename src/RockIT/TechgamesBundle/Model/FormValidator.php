@@ -26,8 +26,9 @@ class FormValidator
         'amount' => "^[-]?[0-9]+\$",
         'number' => "^[-]?[0-9,]+\$",
         'alfanum' => "^[0-9a-zA-Z ,.-_\\s\?\!]+\$",
+        'password' => "^(?!.*(.)\1{3})((?=.*[\d])(?=.*[A-Za-z])|(?=.*[^\w\d\s])(?=.*[A-Za-z])).{8,20}$",
         'not_empty' => "[a-z0-9A-Z]+",
-        'words' => "^[A-Za-z]+[A-Za-z \\s]*\$",
+        'words' => "^[A-Za-z]+[A-Za-z\s]*$",
         'phone' => "^[0-9]{10,11}\$",
         'zipcode' => "^[1-9][0-9]{3}[a-zA-Z]{2}\$",
         'plate' => "^([0-9a-zA-Z]{2}[-]){2}[0-9a-zA-Z]{2}\$",
@@ -191,7 +192,7 @@ class FormValidator
     {
         if(array_key_exists($type, self::$regexes))
         {
-            $returnval =  filter_var($var, FILTER_VALIDATE_REGEXP, array("options"=> array("regexp"=>'!'.self::$regexes[$type].'!i'))) !== false;
+            $returnval =  filter_var($var, FILTER_VALIDATE_REGEXP, array("options"=> array("regexp"=>";".self::$regexes[$type].";"))) !== false;
             return($returnval);
         }
         $filter = false;
