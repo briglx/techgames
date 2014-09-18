@@ -16,14 +16,11 @@ class AdminController extends Controller{
 
     public function indexAction()
     {
-
-        $siteSettings = $this->get('siteSettings');
-
         $games = $this->getDoctrine()
             ->getRepository('RockITTechgamesBundle:Game')
             ->findAll();
 
-        return $this->render('RockITTechgamesBundle:Admin:index.html.twig', array("games" => $games, 'siteSettings' => $siteSettings));
+        return $this->render('RockITTechgamesBundle:Admin:index.html.twig', array("games" => $games));
     }
 
 } 

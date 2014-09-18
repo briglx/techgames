@@ -14,20 +14,15 @@ class GameController extends Controller
 
     public function detailAction($gameId)
     {
-        $siteSettings = $this->get('siteSettings');
-
         $game = $this->getDoctrine()
             ->getRepository('RockITTechgamesBundle:Game')
             ->find($gameId);
 
-        return $this->render('RockITTechgamesBundle:Game:detail.html.twig',
-            array('game' => $game, 'gameId' => $gameId, 'siteSettings' => $siteSettings));
+        return $this->render('RockITTechgamesBundle:Game:detail.html.twig', array('game' => $game, 'gameId' => $gameId));
     }
 
     public function editAction($gameId)
     {
-        $siteSettings = $this->get('siteSettings');
-
         $game = $this->getDoctrine()
             ->getRepository('RockITTechgamesBundle:Game')
             ->find($gameId);
@@ -215,30 +210,28 @@ class GameController extends Controller
         // Show correct view
         if (!$activeTab){
             return $this->render('RockITTechgamesBundle:Game:edit.html.twig',
-                array('game' => $game, 'gameId' => $gameId, "errors"=> $validator->getErrors(), 'siteSettings' => $siteSettings));
+                array('game' => $game, 'gameId' => $gameId, "errors"=> $validator->getErrors()));
         }else if($activeTab == "registrationDetails"){
             return $this->render('RockITTechgamesBundle:Game:editReg.html.twig',
-                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors(), 'siteSettings' => $siteSettings));
+                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors()));
         }else if($activeTab == "details"){
             return $this->render('RockITTechgamesBundle:Game:editDetails.html.twig',
-                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors(), 'siteSettings' => $siteSettings));
+                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors()));
         }else if($activeTab == "schedule"){
             return $this->render('RockITTechgamesBundle:Game:editSchedule.html.twig',
-                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors(), 'siteSettings' => $siteSettings));
+                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors()));
         }else if($activeTab == "results"){
             return $this->render('RockITTechgamesBundle:Game:editResults.html.twig',
-                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors(), 'siteSettings' => $siteSettings));
+                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors()));
         }else{
             return $this->render('RockITTechgamesBundle:Game:edit.html.twig',
-                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors(), 'siteSettings' => $siteSettings));
+                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors()));
         }
 
     }
 
     public function deleteAction($gameId)
     {
-        $siteSettings = $this->get('siteSettings');
-
         $em = $this->getDoctrine()->getManager();
 
         $game = $this->getDoctrine()
@@ -254,14 +247,10 @@ class GameController extends Controller
         }
 
         return $this->redirect($this->generateUrl('admin_overview'));
-
-
     }
 
     public function newAction()
     {
-        $siteSettings = $this->get('siteSettings');
-
         $request = $this->get('request');
         if ($request->getMethod() == 'POST') {
 
@@ -295,19 +284,17 @@ class GameController extends Controller
 
                 // Has Errors
                 return $this->render('RockITTechgamesBundle:Game:new.html.twig',
-                    array("title"=>$title, "description" => $description, "errors"=> $validator->getErrors(), 'siteSettings' => $siteSettings));
+                    array("title"=>$title, "description" => $description, "errors"=> $validator->getErrors()));
             }
 
 
         }
         return $this->render('RockITTechgamesBundle:Game:new.html.twig',
-            array("title"=>"", "description" => "", "errors"=> [], 'siteSettings' => $siteSettings));
+            array("title"=>"", "description" => "", "errors"=> []));
     }
 
     public function joinAction($gameId)
     {
-        $siteSettings = $this->get('siteSettings');
-
         $profileId = 1;
 
         $gameManager = $this->get('gameManager');
@@ -317,6 +304,6 @@ class GameController extends Controller
         $myTeams  = $teamManager->getMyTeams($profileId);
 
         return $this->render('RockITTechgamesBundle:Game:join.html.twig',
-            array('game' => $game, 'gameId' => $gameId, 'myTeams' => $myTeams, 'siteSettings' => $siteSettings));
+            array('game' => $game, 'gameId' => $gameId, 'myTeams' => $myTeams));
     }
 }

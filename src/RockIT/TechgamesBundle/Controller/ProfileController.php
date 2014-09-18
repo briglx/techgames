@@ -11,11 +11,10 @@ class ProfileController extends Controller
 
     public function detailAction($profileId)
     {
-        $siteSettings = $this->get('siteSettings');
         $profileManager = $this->get('profileManager');
         $profile = $profileManager->getProfile($profileId);
 
         return $this->render('RockITTechgamesBundle:Profile:detail.html.twig', 
-            array('profile' => $profile, 'profileId' => $profileId, 'firstName' => $profile->getDisplayName(), 'siteSettings' => $siteSettings));
+            array('profile' => $profile, 'profileId' => $profileId, 'firstName' => $profile->getDisplayName()));
     }
 }

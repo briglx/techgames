@@ -20,3 +20,10 @@ services:
   siteSettings:
     class: RockIT\TechgamesBundle\Model\SiteSettings
     arguments: ["%isRegistrationOpen%"]
+
+  event_listener:
+          class:  RockIT\TechgamesBundle\Listeners\ModelEventListener
+          calls:
+              - [setContainer, ['@service_container']]
+          tags:
+              - { name: kernel.event_subscriber }

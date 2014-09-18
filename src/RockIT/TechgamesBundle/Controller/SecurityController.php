@@ -17,7 +17,6 @@ class SecurityController extends Controller{
 
     public function loginAction(Request $request)
     {
-        $siteSettings = $this->get('siteSettings');
         $session = $request->getSession();
 
         // get the login error if there is one
@@ -39,8 +38,7 @@ class SecurityController extends Controller{
             'RockITTechgamesBundle:Security:login.html.twig',
             array(
                 'last_username' => $lastUsername,
-                'error'         => $error,
-                 'siteSettings' => $siteSettings
+                'error'         => $error
             )
         );
 

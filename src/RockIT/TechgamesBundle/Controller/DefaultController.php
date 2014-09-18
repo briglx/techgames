@@ -10,9 +10,6 @@ class DefaultController extends Controller
 
     public function indexAction()
     {
-        $siteSettings = $this->get('siteSettings');
-
-
         $games = $this->getDoctrine()
             ->getRepository('RockITTechgamesBundle:Game')
             ->findAll();
@@ -42,25 +39,22 @@ class DefaultController extends Controller
 
 
         return $this->render('RockITTechgamesBundle:Default:index.html.twig',
-            array('games' => $games, 'offeringYears' => $offeringYears, 'siteSettings' => $siteSettings));
+            array('games' => $games, 'offeringYears' => $offeringYears));
     }
 
     public function aboutAction()
     {
-        $siteSettings = $this->get('siteSettings');
-        return $this->render('RockITTechgamesBundle:Default:about.html.twig',  array('siteSettings' => $siteSettings));
+        return $this->render('RockITTechgamesBundle:Default:about.html.twig');
     }
 
     public function newsRoomAction()
     {
-        $siteSettings = $this->get('siteSettings');
-        return $this->render('RockITTechgamesBundle:Default:newsroom.html.twig',  array('siteSettings' => $siteSettings));
+        return $this->render('RockITTechgamesBundle:Default:newsroom.html.twig');
     }
 
     public function announcementsAction()
     {
-        $siteSettings = $this->get('siteSettings');
-        return $this->render('RockITTechgamesBundle:Default:announcements.html.twig',  array('siteSettings' => $siteSettings));
+        return $this->render('RockITTechgamesBundle:Default:announcements.html.twig');
     }
 
 }
