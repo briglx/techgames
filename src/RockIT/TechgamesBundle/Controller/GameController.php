@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use RockIT\TechgamesBundle\Model\GameManager;
 use RockIT\TechgamesBundle\Model\FormValidator;
 use RockIT\TechgamesBundle\Entity\Game;
-use RockIT\TechgamesBundle\Model\SiteSettings;
 
 
 class GameController extends Controller

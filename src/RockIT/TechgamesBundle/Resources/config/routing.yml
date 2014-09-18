@@ -8,6 +8,10 @@ login_check:
 logout:
     path:   /logout
 
+register:
+    path:   /register
+    defaults: { _controller: RockITTechgamesBundle:Security:register }
+
 rock_it_techgames_homepage:
     pattern:  /
     defaults: { _controller: RockITTechgamesBundle:Default:index }
