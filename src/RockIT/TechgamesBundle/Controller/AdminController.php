@@ -16,11 +16,33 @@ class AdminController extends Controller{
 
     public function indexAction()
     {
-        $games = $this->getDoctrine()
-            ->getRepository('RockITTechgamesBundle:Game')
-            ->findAll();
 
-        return $this->render('RockITTechgamesBundle:Admin:index.html.twig', array("games" => $games));
+        $request = $this->get('request');
+        $activeTab = $request->get("t");
+
+        if($activeTab == "games"){
+
+            $games = $this->getDoctrine()
+                ->getRepository('RockITTechgamesBundle:Game')
+                ->findAll();
+
+            return $this->render('RockITTechgamesBundle:Admin:games.html.twig', array("games" => $games));
+
+        } else if($activeTab == "users"){
+
+            $users = $this->getDoctrine()
+                ->getRepository('RockITTechgamesBundle:User')
+                ->findAll();
+
+            return $this->render('RockITTechgamesBundle:Admin:users.html.twig', array("users" => $users));
+
+        } else {
+
+            return $this->render('RockITTechgamesBundle:Admin:index.html.twig');
+
+        }
+
+
     }
 
 } 

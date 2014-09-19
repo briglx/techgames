@@ -72,6 +72,8 @@ class SecurityController extends Controller{
 
                 $newUser->setUsername($request->get("email"));
                 $newUser->setEmail($request->get("email"));
+                $newUser->setFirstName($request->get("firstname"));
+                $newUser->setLastName($request->get("lastname"));
 
                 $em = $this->getDoctrine()->getManager();
                 $defaultRole = $em->getRepository('RockITTechgamesBundle:Role')->findOneBy(array('role' => 'ROLE_USER'));
@@ -99,28 +101,43 @@ class SecurityController extends Controller{
                     return $this->redirect($this->generateUrl('rock_it_techgames_homepage'));
                 } catch (\Exception $e) {
 
+                    // Get last variables
+                    $firstname = "";
+                    if ($request->get("firstname")) {
+                        $firstname = $request->get("firstname");
+                    }
+                    $lastname = "";
+                    if ($request->get("lastname")) {
+                        $lastname = $request->get("lastname");
+                    }
+                    $email = "";
+                    if ($request->get("email")) {
+                        $email = $request->get("email");
+                    }
 
-                    $response = new JsonResponse();
-                    $response->setStatusCode(400);
-                    $response->setData(array(
-                        'message' => "Unable to register this username. Please try a different username."
-                    ));
-
-                    return $response;
-
+                    return $this->render(
+                        'RockITTechgamesBundle:Security:register.html.twig',
+                        array(
+                            'message' => "Unable to register this username. Please try a different username.",
+                            'last_firstname' => $firstname,
+                            'last_lastname' => $lastname,
+                            'last_email' => $email,
+                            'errors' => $validator->getErrors()
+                        )
+                    );
                 }
 
 
             } else {
 
-                $response = new JsonResponse();
-
-                $response->setStatusCode(400);
-
-                $response->setData(array(
-                    'message' => "Invalid form",
-                    "errors" => $validator->getErrors()
-                ));
+//                $response = new JsonResponse();
+//
+//                $response->setStatusCode(400);
+//
+//                $response->setData(array(
+//                    'message' => "Invalid form",
+//                    "errors" => $validator->getErrors()
+//                ));
 
 
                 // Get last variables
@@ -140,6 +157,7 @@ class SecurityController extends Controller{
                 return $this->render(
                     'RockITTechgamesBundle:Security:register.html.twig',
                     array(
+                        'message' => "Unable to register this user.",
                         'last_firstname' => $firstname,
                         'last_lastname' => $lastname,
                         'last_email' => $email,

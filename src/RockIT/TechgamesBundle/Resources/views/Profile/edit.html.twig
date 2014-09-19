@@ -1,0 +1,88 @@
+{% extends 'RockITTechgamesBundle::layout.html.twig' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-4">
+        <ul class="nav nav-sidebar">
+            <li class="active"><a href="{{path('user_edit', {'userId':user.getId()})}}?t=n">Name and Details</a></li>
+            <li><a href="{{path('user_edit', {'userId':user.getId()})}}?t=a">Account Settings</a></li>
+            <li><a href="{{path('user_edit', {'userId':user.getId()})}}?t=p">Profile</a></li>
+            <li><a href="{{path('user_edit', {'userId':user.getId()})}}?t=schedule">Schedule</a></li>
+        </ul>
+    </div>
+    
+    <div class="col-md-8">
+
+        <form class="form-horizontal" role="form" method="post">
+
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">First Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="firstname" name="firstname" value="{{user.getFirstName()}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastname" class="col-sm-2 control-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="lastname" name="lastname" value="{{user.getLastName()}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="gender" class="col-sm-2 control-label">Gender</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="gender" name="gender" value="{{user.getGender()}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="age" class="col-sm-2 control-label">Age</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="age" name="age" value="{{user.getAge()}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address" class="col-sm-2 control-label">Address</label>
+                <div class="col-sm-10">
+                    <textarea rows="6" cols="30" class="form-control" type="text" id="address" name="address">{{user.getAddress()}}</textarea>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="website" class="col-sm-2 control-label">Website</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="website" name="website" value="{{user.getWebsite()}}">
+                </div>
+            </div>
+
+            <div class="errorMsg">
+                <ul class="error col-sm-10 col-sm-offset-2">
+                    {% if errors %}
+                        {% for invalidField, error in errors %}
+                            <li ><span class="glyphicon glyphicon-exclamation-sign"></span> Please enter a valid {{ invalidField}}.</li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+
+            <div class="saveChanges pull-right">
+                <button type="submit" class="btn btn-default" id="submitEdit">Save</button>
+                <span>or</span>
+                <a href="" class="cancel">Cancel</a>
+                <div class="error"></div>
+            </div>
+        </form>
+
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}

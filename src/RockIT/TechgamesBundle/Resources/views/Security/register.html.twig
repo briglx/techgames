@@ -2,8 +2,8 @@
 
 {% block content %}
 
-    {% if errors %}
-        <div class="alert alert-danger" role="alert">Unable to register user.</div>
+    {% if message %}
+        <div class="alert alert-danger" role="alert">{{ message }}</div>
     {% endif %}
     <div class="row">
 
