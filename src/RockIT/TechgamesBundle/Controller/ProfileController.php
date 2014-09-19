@@ -162,6 +162,21 @@ class ProfileController extends Controller
 
     public function deleteAction($userId)
     {
-        return $this->redirect($this->generateUrl('admin_overview'));
+
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $this->getDoctrine()
+            ->getRepository('RockITTechgamesBundle:User')
+            ->findOneById($userId);
+
+        if (!$user) {
+            throw $this->createNotFoundException('The user does not exist');
+        }
+        else {
+            $em->remove($user);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('admin_overview')."?t=users");
     }
 }
