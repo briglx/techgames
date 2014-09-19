@@ -26,6 +26,10 @@
     
         <div class="col-md-8  main">
 
+            {% if message %}
+                <div class="alert alert-danger" role="alert">{{ message }}</div>
+            {% endif %}
+
             <form class="form-horizontal" role="form" method="post">
 
                 <div class="form-group">

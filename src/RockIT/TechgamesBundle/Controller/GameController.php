@@ -33,6 +33,8 @@ class GameController extends Controller
         // Get request info
         $request = $this->get('request');
         $activeTab = $request->get("t");
+        $message = "";
+
         if ($request->getMethod() == 'POST') {
 
             // Choose Correct validation
@@ -189,15 +191,22 @@ class GameController extends Controller
             // Validate and save game
             if($validator->validate($_POST)) {
 
-                // No Errors Persisit to DB
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($game);
-                $em->flush();
+                try {
+
+                    // No Errors Persisit to DB
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($game);
+                    $em->flush();
+                }
+                catch(\Exception $ex){
+                    // Error saving to Database
+                    $message = "Unable to save changes.";
+                }
 
             }
             else {
-
                 // Errors Don't save
+                $message = "Unable to save changes.";
             }
 
         }
@@ -209,22 +218,22 @@ class GameController extends Controller
         // Show correct view
         if (!$activeTab){
             return $this->render('RockITTechgamesBundle:Game:edit.html.twig',
-                array('game' => $game, 'gameId' => $gameId, "errors"=> $validator->getErrors()));
+                array('game' => $game, 'gameId' => $gameId, 'message' => $message, "errors"=> $validator->getErrors()));
         }else if($activeTab == "registrationDetails"){
             return $this->render('RockITTechgamesBundle:Game:editReg.html.twig',
-                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors()));
+                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, 'message' => $message, "errors"=> $validator->getErrors()));
         }else if($activeTab == "details"){
             return $this->render('RockITTechgamesBundle:Game:editDetails.html.twig',
-                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors()));
+                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, 'message' => $message, "errors"=> $validator->getErrors()));
         }else if($activeTab == "schedule"){
             return $this->render('RockITTechgamesBundle:Game:editSchedule.html.twig',
-                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors()));
+                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, 'message' => $message, "errors"=> $validator->getErrors()));
         }else if($activeTab == "results"){
             return $this->render('RockITTechgamesBundle:Game:editResults.html.twig',
-                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors()));
+                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, 'message' => $message, "errors"=> $validator->getErrors()));
         }else{
             return $this->render('RockITTechgamesBundle:Game:edit.html.twig',
-                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, "errors"=> $validator->getErrors()));
+                array('game' => $game, 'gameId' => $gameId, 'activeTab' => $activeTab, 'message' => $message, "errors"=> $validator->getErrors()));
         }
 
     }
