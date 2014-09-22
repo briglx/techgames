@@ -42,7 +42,12 @@ INSERT INTO techgames_role (name, role) VALUES ('user', 'ROLE_USER');
 
 	mysql> INSERT INTO user_role (user_id, role_id) VALUES (1,1);
 	```
+5. Username
 
+	```
+	mysql -u root -p
+	apollo
+	````
 
 
 
