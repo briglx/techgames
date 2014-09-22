@@ -3,29 +3,23 @@
 {% block content %}
 <h1>Welcome Admin</h1>
 
-    <h3>Games</h3>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>&nbsp;</th>
-        </tr>
-        </thead>
-        {% for game in games %}
-            <tr>
-                <td>{{ game.id }}</td>
-                <td>{{ game.title }}</td>
-                <td>{{ game.description }}</td>
-                <td>
-                    <a href="{{path('game_edit', {'gameId':game.getId()})}}" class="btn btn-default">Edit</a>
-                    <a href="{{path('game_delete', {'gameId':game.getId()})}}" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    <a href="{{path('game_new')}}" class="btn btn-primary">New Game</a>
+    <div class="row">
+        <div class=" col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="{{path('admin_overview')}}">Overview</a></li>
+                <li ><a href="{{path('admin_overview')}}?t=games">Games</a></li>
+                <li><a href="{{path('admin_overview')}}?t=users">Users</a></li>
+                <li><a href="{{path('admin_overview')}}?t=teams">Teams</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10  main">
+            <h3>Overview</h3>
+            <p>This is the overview</p>
+        </div>
+    </div>
+
+
+
 
 
 {% endblock %}

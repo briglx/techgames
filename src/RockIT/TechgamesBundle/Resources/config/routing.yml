@@ -8,6 +8,10 @@ login_check:
 logout:
     path:   /logout
 
+register:
+    path:   /register
+    defaults: { _controller: RockITTechgamesBundle:Security:register }
+
 rock_it_techgames_homepage:
     pattern:  /
     defaults: { _controller: RockITTechgamesBundle:Default:index }
@@ -60,9 +64,7 @@ sponsor_detail:
     pattern:  /sponsors/{sponsorId}
     defaults: { _controller: RockITTechgamesBundle:Sponsor:detail }
 
-profile_detail:
-    pattern:  /profile/{profileId}
-    defaults: { _controller: RockITTechgamesBundle:Profile:detail }
+
 
 team_create:
     pattern:  /team/create
@@ -87,3 +89,20 @@ teams_overview:
 admin_overview:
     pattern:  /admin
     defaults: { _controller: RockITTechgamesBundle:Admin:index }
+
+
+profile_detail:
+    pattern:  /profile/{profileId}
+    defaults: { _controller: RockITTechgamesBundle:Profile:detail }
+
+user_create:
+    pattern:  /user/create
+    defaults: { _controller: RockITTechgamesBundle:Profile:create }
+
+user_edit:
+    pattern:  /user/{userId}/edit
+    defaults: { _controller: RockITTechgamesBundle:Profile:edit }
+
+user_delete:
+    pattern:  /user/{userId}/delete
+    defaults: { _controller: RockITTechgamesBundle:Profile:delete }

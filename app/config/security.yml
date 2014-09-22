@@ -41,3 +41,6 @@ security:
         - { path: ^/game/\d+/edit, roles: ROLE_ADMIN }
         - { path: ^/game/\d+/delete, roles: ROLE_ADMIN }
         - { path: ^/game/new, roles: ROLE_ADMIN }
+        - { path: ^/user/\d+/edit, roles: ROLE_ADMIN }
+        - { path: ^/user/\d+/delete, roles: ROLE_ADMIN }
+        - { path: ^/user/new, roles: ROLE_ADMIN }

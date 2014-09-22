@@ -1,0 +1,49 @@
+{% extends 'RockITTechgamesBundle::layout.html.twig' %}
+
+{% block content %}
+<h1>Welcome Admin</h1>
+
+    <div class="row">
+        <div class=" col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li ><a href="{{path('admin_overview')}}">Overview</a></li>
+                <li ><a href="{{path('admin_overview')}}?t=games">Games</a></li>
+                <li class="active"><a href="{{path('admin_overview')}}?t=users">Users</a></li>
+                <li><a href="{{path('admin_overview')}}?t=teams">Teams</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10  main">
+            <h3>Users</h3>
+            <a href="{{path('user_create')}}" class="btn btn-primary pull-right">New User</a>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Is Active</th>
+                    <th>Roles</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.isActive }}</td>
+                        <td>&nbsp;</td>
+                        <td>
+                            <a href="{{path('user_edit', {'userId':user.getId()})}}" class="btn btn-default">Edit</a>
+                        </td>
+                        <td>
+                            <a href="{{path('user_delete', {'userId':user.getId()})}}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

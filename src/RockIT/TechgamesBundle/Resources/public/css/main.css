@@ -90,13 +90,13 @@ img.resize{
     bottom:0px;
     right: 0px;
     left: 0px;
-    background: #1592C3;
-    sbackground: rgba(21, 146, 195, 0.8);
+
+    background: rgba(21, 146, 195, 0.8);
     border-radius: 0px;
     border: none;
     z-index: 5;
     -moz-opacity: 0.80;
-    opacity:.80;
+    sopacity:.80;
     filter: alpha(opacity=80);
 }
 
@@ -107,19 +107,7 @@ img.resize{
     background-color:#e6e6e6;
 }
 
-.navbar .btn {
 
-    color: white;
-    font-size: 2.5em;
-    font-weight: 100;
-    background:  none;
-}
-
-
-.navbar .btn .txt {
-    margin-left:2em;
-    font-size: 25px;
-}
 
 /* Default settings */
 .navbar-title {
@@ -134,6 +122,12 @@ img.resize{
 
 .navbar img{
     display: none;
+}
+
+.dropdown-menu .navbar-form a {
+    font-size: 1em;
+    font-weight: normal;
+    color:#428bca;
 }
 
 
@@ -161,7 +155,7 @@ img.resize{
     }
 
     .navbar-collapse{
-        background-color:#1592C3;
+        background-color:transparent;
 
     }
 
@@ -212,6 +206,32 @@ img.resize{
         left:45px;
         z-index: 10;
 
+    }
+
+    .navbar a {
+        color: white;
+        font-size: 2.5em;
+        font-weight: 100;
+        background:  none;
+    }
+
+
+    .navbar a .txt {
+        margin-left:2em;
+        font-size: 25px;
+    }
+
+
+
+    .navbar-form .form-group{
+        margin-bottom: 10px;
+    }
+
+    .dropdown-menu{
+        width: 300px;
+    }
+    .navbar-nav  .form-group{
+        width:100%;
     }
 }
 
@@ -554,6 +574,9 @@ footer .sponsor img {
 }
 
 
+.carousel{
+    z-index: -1;
+}
 
 .carousel-caption {
     left: 20%;
@@ -585,6 +608,7 @@ footer .sponsor img {
         margin-bottom: 5px;
         margin-left: -11px;
         margin-right: 0px;
+
     }
 
     .carousel-inner .item img {
@@ -742,8 +766,8 @@ footer .sponsor img {
 .right-addon input { padding-right: 30px; }
 
 
-.form-signin {
-    max-width: 300px;
+.form-signin, form.register {
+    smax-width: 300px;
     padding: 19px 29px 29px;
     margin: 0 auto 20px;
     background-color: #fff;
@@ -765,6 +789,10 @@ footer .sponsor img {
     height: auto;
     margin-bottom: 15px;
     padding: 7px 9px;
+}
+
+.form-signin input, form.register input{
+    margin-bottom: 10px;
 }
 
 .errorMsg ul {
