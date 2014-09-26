@@ -20,7 +20,19 @@ class ProfileController extends Controller
 
     public function createAction()
     {
-        return $this->render('RockITTechgamesBundle:Profile:create.html.twig');
+
+        $request = $this->get('request');
+
+        if ($request->getMethod() == 'POST') {
+
+        }
+
+        return $this->render('RockITTechgamesBundle:Profile:create.html.twig' ,array(
+            'last_firstname' => "",
+            'last_lastname' => "",
+            'last_email' => "",
+            'errors' => array()
+        ));
     }
 
     public function editAction($userId)

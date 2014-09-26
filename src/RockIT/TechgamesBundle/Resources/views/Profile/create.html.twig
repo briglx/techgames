@@ -8,8 +8,29 @@
     
     <div class="col-md-8">
 
-        <h1>Create</h1>
+        <h1>Create User</h1>
 
+        <form class="register clearfix" role="form" action="{{ path('register') }}" method="post">
+            <h2 class="form-signin-heading">Please Register</h2>
+            <input id="firstname" name="firstname" type="text" class="form-control" placeholder="First Name" required autofocus value="{{ last_firstname }}">
+            <input id="lastname" name="lastname" type="text" class="form-control" placeholder="Last Name" required autofocus value="{{ last_lastname }}">
+            <input id="email" name="email" type="email" class="form-control" placeholder="Email address" required autofocus value="{{ last_email }}">
+            <input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
+
+
+            <div class="errorMsg">
+                <ul class="error">
+                    {% if errors %}
+                        {% for invalidField, error in errors %}
+                            <li ><span class="glyphicon glyphicon-exclamation-sign"></span> Please enter a valid {{ invalidField}}.</li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+
+            <button class="btn btn-lg btn-default  pull-right" type="submit">Register</button>
+
+        </form>
 
     </div>
 
