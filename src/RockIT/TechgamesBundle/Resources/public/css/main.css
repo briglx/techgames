@@ -863,6 +863,24 @@ div.stretchy-wrapper > div {
     padding: 1px;
 }*/
 
+.unsupported{
+    text-align: center;
+    background-color: rgb(253, 253, 196);
+    margin: 0px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    display:none;
+}
+
+.browsers .b-logo {
+    height:100px;
+
+}
+
+.browsers td{
+    padding:5px 25px;
+
+}
 
 nav {
     filter:none!important;

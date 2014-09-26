@@ -57,4 +57,9 @@ class DefaultController extends Controller
         return $this->render('RockITTechgamesBundle:Default:announcements.html.twig');
     }
 
+    public function unsupportedAction()
+    {
+        return $this->render('RockITTechgamesBundle:Default:unsupported.html.twig');
+    }
+
 }

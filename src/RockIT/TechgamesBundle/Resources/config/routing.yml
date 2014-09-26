@@ -1,3 +1,7 @@
+unsupported:
+    pattern: /unsupported
+    defaults: { _controller: RockITTechgamesBundle:Default:unsupported }
+
 login:
     pattern: /login
     defaults: { _controller: RockITTechgamesBundle:Security:login }
