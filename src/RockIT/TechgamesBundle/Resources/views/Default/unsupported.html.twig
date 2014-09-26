@@ -1,0 +1,53 @@
+{% extends 'RockITTechgamesBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-12">
+
+            <h1>Supported browsers</h1>
+            <p>
+                You can access Avnet Techgames through the Internet on broswers like Chrome, Firefox, Internet Exploerer, and Safari on your computer.
+            </p>
+            <h3>To get the latest features, use a supported browser</h3>
+            <p>
+                In general, the website supports the current and prior major releases of Chrome, Firefox, Internet Explorer and Safari. Please upgrade your browser to the latest version.
+            </p>
+            <table class="browsers">
+                <tr>
+                    <td class="text-center">
+                        <img class="b-logo" src="{{ asset('bundles/rockittechgames/images/chrome_logo.png') }}" />
+                        <br><br>
+                        <a href="//www.google.com/chrome" target="_blank">Download<br>
+                            Google Chrome</a>
+                    </td>
+                    <td class="text-center">
+                        <img class="b-logo" src="{{ asset('bundles/rockittechgames/images/firefoxlogo.png') }}" />
+                        <br> <br>
+                        <a href="//www.mozilla.org/firefox/" target="_blank">Download<br>
+                            Firefox</a>
+                    </td>
+                    <td class="text-center">
+                        <img class="b-logo" src="{{ asset('bundles/rockittechgames/images/internet-explorer.png') }}" />
+                        <br> <br>
+                        <a href="http://windows.microsoft.com/en-US/internet-explorer/download-ie" target="_blank">Download<br>
+                            Internet Explorer</a>
+                    </td>
+                    <td class="text-center">
+                        <img class="b-logo" src="{{ asset('bundles/rockittechgames/images/safari-logo.png') }}" />
+                        <br><br>
+                        <a href="//www.apple.com/safari" target="_blank">Download<br>
+                            Safari</a>
+                    </td>
+                </tr>
+            </table>
+
+
+
+
+
+        </div><!--/span-->
+    </div><!--/row-->
+{% endblock %}
+
+
