@@ -209,7 +209,6 @@ img.resize{
     }
 
     .navbar a {
-        color: white;
         font-size: 2.5em;
         font-weight: 100;
         background:  none;
@@ -828,10 +827,20 @@ footer .sponsor img {
     min-height:600px;
 }
 
-.col-centered{
-    float: none;
-    margin: 0 auto;
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
 }
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
 
 div.stretchy-wrapper {
     width: 100%;
