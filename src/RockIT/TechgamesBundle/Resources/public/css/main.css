@@ -91,6 +91,8 @@ img.resize{
     right: 0px;
     left: 0px;
 
+
+    background: rgb(64, 164, 204);
     background: rgba(21, 146, 195, 0.8);
     border-radius: 0px;
     border: none;
@@ -861,3 +863,9 @@ div.stretchy-wrapper > div {
     padding: 1px;
 }*/
 
+
+nav {
+    filter:none!important;
+    background-image: none !important;
+
+}
