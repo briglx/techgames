@@ -14,7 +14,7 @@
         </div>
 
         <div class="col-md-3">
-            <button type="button" class="btn btn-primary pull-right">New Team</button>
+            <a href="{{path('team_create')}}" class="btn btn-primary pull-right">New Team</a>
 
             <button type="button" class="btn btn-primary pull-right">My Teams</button>
         </div>
@@ -30,7 +30,7 @@
 
             <div class="panel panel-default team">
                 <div class="panel-heading clearfix">
-                    <h1 class="panel-title">{{ team.getName() }}<button type="button" class="btn btn-default pull-right">Join</button> <a class="btn btn-link pull-right" href="{{path('team_edit', {'teamId':team.getTeamId()})}}">Edit</a></h1>
+                    <h1 class="panel-title">{{ team.getName() }}<button type="button" class="btn btn-default pull-right">Join</button> <a class="btn btn-link pull-right" href="{{path('team_edit', {'teamId':team.getId()})}}">Edit</a></h1>
 
                 </div>
                 <div class="panel-body">

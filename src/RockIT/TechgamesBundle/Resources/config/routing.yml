@@ -82,6 +82,10 @@ team_edit:
     pattern:  /team/{teamId}/edit
     defaults: { _controller: RockITTechgamesBundle:Team:edit }
 
+team_delete:
+    pattern:  /team/{teamId}/delete
+    defaults: { _controller: RockITTechgamesBundle:Team:delete }
+
 school_detail:
     pattern:  /school/{schoolId}
     defaults: { _controller: RockITTechgamesBundle:School:detail }

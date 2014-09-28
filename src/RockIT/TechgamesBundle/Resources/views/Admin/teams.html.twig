@@ -1,0 +1,45 @@
+{% extends 'RockITTechgamesBundle::layout.html.twig' %}
+
+{% block content %}
+<h1>Welcome Admin</h1>
+
+    <div class="row">
+        <div class=" col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li ><a href="{{path('admin_overview')}}">Overview</a></li>
+                <li ><a href="{{path('admin_overview')}}?t=games">Games</a></li>
+                <li ><a href="{{path('admin_overview')}}?t=users">Users</a></li>
+                <li class="active"><a href="{{path('admin_overview')}}?t=teams">Teams</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10  main">
+            <h3>Teams</h3>
+            <a href="{{path('team_create')}}" class="btn btn-primary pull-right">New Team</a>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Team Name</th>
+                    <th>Description</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                </tr>
+                </thead>
+                {% for team in teams %}
+                    <tr>
+                        <td>{{ team.id }}</td>
+                        <td>{{ team.name }}</td>
+                        <td>{{ team.description }}</td>
+                        <td>
+                            <a href="{{path('team_edit', {'teamId':team.getId()})}}" class="btn btn-default">Edit</a>
+                        </td>
+                        <td>
+                            <a href="{{path('team_delete', {'teamId':team.getId()})}}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

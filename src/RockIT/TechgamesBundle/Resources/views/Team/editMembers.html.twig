@@ -1,0 +1,47 @@
+{% extends 'RockITTechgamesBundle::layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <h1>Edit Team <small>{{ team.name }}</small></h1>
+        <hr>
+        <div class=" col-md-4 sidebar">
+            <ul class="nav nav-sidebar">
+                <li ><a href="{{path('team_edit', {'teamId':team.getId()})}}?t=home">Team Home</a></li>
+                <li class="active"><a href="{{path('team_edit', {'teamId':team.getId()})}}?t=members">Members</a></li>
+                <li><a href="{{path('team_edit', {'teamId':team.getId()})}}?t=games">Games</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-8  main">
+
+            {% if message %}
+                <div class="alert alert-danger" role="alert">{{ message }}</div>
+            {% endif %}
+
+            <form class="form-horizontal" role="form" method="post">
+
+               <div class="row">
+
+                   <div class="col-md-10">
+                       <div class="inner-addon left-addon">
+                           <i class="glyphicon glyphicon-search"></i>
+                           <input type="text" class="form-control" placeholder="Add a user to team" />
+                       </div>
+                   </div>
+
+                   <div class="col-md-2">
+                       <button type="button" class="btn btn-default pull-right">Add</button>
+
+                   </div>
+
+               </div>
+
+
+            </form>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

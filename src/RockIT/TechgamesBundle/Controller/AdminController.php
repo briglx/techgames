@@ -36,6 +36,14 @@ class AdminController extends Controller{
 
             return $this->render('RockITTechgamesBundle:Admin:users.html.twig', array("users" => $users));
 
+        } else if($activeTab == "teams"){
+
+            $teams = $this->getDoctrine()
+                ->getRepository('RockITTechgamesBundle:Team')
+                ->findAll();
+
+            return $this->render('RockITTechgamesBundle:Admin:teams.html.twig', array("teams" => $teams));
+
         } else {
 
             return $this->render('RockITTechgamesBundle:Admin:index.html.twig');

@@ -2,24 +2,52 @@
 
 {% block content %}
 
-    <div class="container">
+    {% if message %}
+        <div class="alert alert-danger" role="alert">{{ message }}</div>
+    {% endif %}
 
-        <div class="panel panel-default">
+    <div class="row">
 
-            <div class="panel-heading">
-                <h1 class="panel-title">Create New Team</h1>
+        <h1>Create New Team</h1>
 
-            </div>
-            <div class="panel-body">
-                <form role="form">
-                    <div class="form-group">
+        <div class="col-md-8">
 
-                        <input type="teamName" class="form-control" id="inputTeamName" placeholder="Enter Team Name">
-                    </div>
 
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            </div>
+            <form  role="form"  method="post">
+                <div class="form-group">
+                    <label for="name">Team Name</label>
+                    {% if name %}
+                        <input type="text" class="form-control" id="name" name="name" value="{{ name }}" placeholder="Team Name">
+                    {% else %}
+                        <input type="text" class="form-control" id="name" name="name" value="" placeholder="Team Name">
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    {% if name %}
+                        <input type="text" class="form-control" id="description" name="description" value="{{ description }}" placeholder="Description">
+                    {% else %}
+                        <input type="text" class="form-control" id="description" name="description" value="" placeholder="Description">
+                    {% endif %}
+                </div>
+
+                <div class="errorMsg">
+                    <ul class="error">
+                        {% if errors %}
+                            {% for invalidField, error in errors %}
+                                <li ><span class="glyphicon glyphicon-exclamation-sign"></span> Please enter a valid {{ invalidField}}.</li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <div class="saveChanges">
+                    <button type="submit" class="btn btn-default" id="submitGameEdit">Save</button>
+                    <span>or</span>
+                    <a href="{{ path(lastPath) }}?t=teams" class="cancel">Cancel</a>
+                </div>
+            </form>
 
         </div>
     </div>
