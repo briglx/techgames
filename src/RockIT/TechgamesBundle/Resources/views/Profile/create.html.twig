@@ -3,19 +3,53 @@
 {% block content %}
 
 
+    {% if message %}
+        <div class="alert alert-danger" role="alert">{{ message }}</div>
+    {% endif %}
+
 <div class="row">
-    <div class="col-md-4"><img src="http://placehold.it/300x300" /></div>
-    
+
+        <h1>Create New User</h1>
+
     <div class="col-md-8">
 
-        <h1>Create User</h1>
+        <form  role="form"  method="post">
 
-        <form class="register clearfix" role="form" action="{{ path('register') }}" method="post">
-            <h2 class="form-signin-heading">Please Register</h2>
-            <input id="firstname" name="firstname" type="text" class="form-control" placeholder="First Name" required autofocus value="{{ last_firstname }}">
-            <input id="lastname" name="lastname" type="text" class="form-control" placeholder="Last Name" required autofocus value="{{ last_lastname }}">
-            <input id="email" name="email" type="email" class="form-control" placeholder="Email address" required autofocus value="{{ last_email }}">
-            <input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
+            <div class="form-group">
+                <label for="firstname">First Name</label>
+                {% if firstname %}
+                    <input type="text" class="form-control" id="firstname" name="firstname" value="{{ firstname }}" placeholder="First Name">
+                {% else %}
+                    <input type="text" class="form-control" id="firstname" name="firstname" value="" placeholder="First Name">
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                {% if lastname %}
+                    <input type="text" class="form-control" id="lastname" name="lastname" value="{{ lastname }}" placeholder="Last Name">
+                {% else %}
+                    <input type="text" class="form-control" id="lastname" name="lastname" value="" placeholder="Last Name">
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                {% if email %}
+                    <input type="email" class="form-control" id="email" name="email" value="{{ email }}" placeholder="Email">
+                {% else %}
+                    <input type="email" class="form-control" id="email" name="email" value="" placeholder="Email">
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                {% if password %}
+                    <input type="password" class="form-control" id="password" name="password" value="{{ password }}" placeholder="Password">
+                {% else %}
+                    <input type="password" class="form-control" id="password" name="password" value="" placeholder="Password">
+                {% endif %}
+            </div>
 
 
             <div class="errorMsg">
@@ -28,11 +62,15 @@
                 </ul>
             </div>
 
-            <button class="btn btn-lg btn-default  pull-right" type="submit">Register</button>
+            <div class="saveChanges">
+                <button type="submit" class="btn btn-default" id="submitGameEdit">Save</button>
+                <span>or</span>
+                <a href="{{ path("admin_overview") }}?t=users" class="cancel">Cancel</a>
+            </div>
 
         </form>
 
-    </div>
+     </div>
 
 </div>
 
