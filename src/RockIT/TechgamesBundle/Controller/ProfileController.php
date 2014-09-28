@@ -5,6 +5,7 @@ namespace RockIT\TechgamesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use RockIT\TechgamesBundle\Model\ProfileManager;
 use RockIT\TechgamesBundle\Model\FormValidator;
+use RockIT\TechgamesBundle\Entity\User;
 
 class ProfileController extends Controller
 {
@@ -25,12 +26,113 @@ class ProfileController extends Controller
 
         if ($request->getMethod() == 'POST') {
 
+            $validations = array(
+                'firstname' => 'words',
+                'lastname' => 'words',
+                'email' => 'email',
+                'password' => 'password');
+            $required = array('firstname', 'lastname', 'email', 'password');
+            $sanitize = array('firstname', 'lastname', 'email', 'password');
+            $validator = new FormValidator($validations, $required, $sanitize);
+
+            if ($validator->validate($_POST)) {
+
+                // Create new user object
+                $newUser = new User();
+
+                $newUser->setUsername($request->get("email"));
+                $newUser->setEmail($request->get("email"));
+                $newUser->setFirstName($request->get("firstname"));
+                $newUser->setLastName($request->get("lastname"));
+
+                $em = $this->getDoctrine()->getManager();
+                $defaultRole = $em->getRepository('RockITTechgamesBundle:Role')->findOneBy(array('role' => 'ROLE_USER'));
+
+                $newUser->addRole($defaultRole);
+
+                // Encode password
+                $factory = $this->container->get('security.encoder_factory');
+                $encoder = $factory->getEncoder($newUser);
+                $password = $encoder->encodePassword($request->get("password"), null);
+                $newUser->setPassword($password);
+
+                // Save new user
+                try {
+                    $em->persist($newUser);
+                    $em->flush();
+
+                    $userId = $newUser->getId();
+
+                    return $this->redirect($this->generateUrl('user_edit',array('userId' => $userId) ));
+
+
+                } catch (\Exception $e) {
+
+                    // Get last variables
+                    $firstname = "";
+                    if ($request->get("firstname")) {
+                        $firstname = $request->get("firstname");
+                    }
+                    $lastname = "";
+                    if ($request->get("lastname")) {
+                        $lastname = $request->get("lastname");
+                    }
+                    $email = "";
+                    if ($request->get("email")) {
+                        $email = $request->get("email");
+                    }
+
+                    return $this->render(
+                        'RockITTechgamesBundle:Profile:create.html.twig',
+                        array(
+                            'message' => "Unable to register this username. Please try a different username.",
+                            'firstname' => $firstname,
+                            'lastname' => $lastname,
+                            'email' => $email,
+                            'password' => "",
+                            'errors' => $validator->getErrors()
+                        )
+                    );
+                }
+
+
+            } else {
+
+
+                // Get last variables
+                $firstname = "";
+                if ($request->get("firstname")) {
+                    $firstname = $request->get("firstname");
+                }
+                $lastname = "";
+                if ($request->get("lastname")) {
+                    $lastname = $request->get("lastname");
+                }
+                $email = "";
+                if ($request->get("email")) {
+                    $email = $request->get("email");
+                }
+
+                return $this->render(
+                    'RockITTechgamesBundle:Profile:create.html.twig',
+                    array(
+                        'message' => "Unable to register this user.",
+                        'firstname' => $firstname,
+                        'lastname' => $lastname,
+                        'email' => $email,
+                        'password' => "",
+                        'errors' => $validator->getErrors()
+                    )
+                );
+            }
         }
 
         return $this->render('RockITTechgamesBundle:Profile:create.html.twig' ,array(
-            'last_firstname' => "",
-            'last_lastname' => "",
-            'last_email' => "",
+            'message' => "",
+            'firstname' => "",
+            'lastname' => "",
+            'email' => "",
+            'password' => "",
             'errors' => array()
         ));
     }
