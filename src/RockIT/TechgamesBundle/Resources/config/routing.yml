@@ -69,6 +69,9 @@ sponsor_detail:
     defaults: { _controller: RockITTechgamesBundle:Sponsor:detail }
 
 
+teams_overview:
+    pattern:  /teams
+    defaults: { _controller: RockITTechgamesBundle:Team:overview }
 
 team_create:
     pattern:  /team/create
@@ -86,13 +89,16 @@ team_delete:
     pattern:  /team/{teamId}/delete
     defaults: { _controller: RockITTechgamesBundle:Team:delete }
 
+team_remove_member:
+    pattern:  /team/{teamId}/member/{profileId}/remove
+    defaults: { _controller: RockITTechgamesBundle:Team:removeMember }
+
+
+
 school_detail:
     pattern:  /school/{schoolId}
     defaults: { _controller: RockITTechgamesBundle:School:detail }
 
-teams_overview:
-    pattern:  /teams
-    defaults: { _controller: RockITTechgamesBundle:Team:overview }
 
 admin_overview:
     pattern:  /admin

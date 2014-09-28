@@ -36,6 +36,28 @@
 
                </div>
 
+                {% for member in team.getMembers() %}
+
+                    <div class="row member">
+                        <div class="col-sm-2">
+                            <a class="image" href="{{path('profile_detail', {'profileId':member.getId()})}}"><img  src="{{ member.avatar(90) }}" alt="{{ member.username }}" class="img-rounded"></a>
+                        </div>
+                        <div class="col-sm-5">
+                            <p class="lead">{{ member.displayName }}</p>
+                            <p class="fn"><a href="{{path('profile_detail', {'profileId':member.getId()})}}">{{ member.username }}</a></p>
+                        </div>
+                        <div class="col-5">
+                            <a  href="{{ path('team_remove_member', {'teamId':team.getId, 'profileId':member.getId}) }}" class="btn btn-danger pull-right">Remove</a>
+                        </div>
+
+
+
+                    </div>
+
+
+                {% endfor %}
+
+
 
             </form>
         </div>

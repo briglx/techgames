@@ -89,6 +89,10 @@ class User implements UserInterface, \Serializable
      */
     private $bio;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Team", mappedBy="users")
+     **/
+    private $teams;
 
     /**
      * @ORM\ManyToMany(targetEntity="Role", inversedBy="users")
@@ -100,6 +104,7 @@ class User implements UserInterface, \Serializable
     {
         $this->isActive = true;
         $this->roles = new ArrayCollection();
+        $this->teams = new ArrayCollection();
 
     }
 
@@ -461,4 +466,60 @@ class User implements UserInterface, \Serializable
     {
         return $this->bio;
     }
+
+    /**
+     * Add teams
+     *
+     * @param \RockIT\TechgamesBundle\Entity\Team $teams
+     * @return User
+     */
+    public function addTeam(\RockIT\TechgamesBundle\Entity\Team $teams)
+    {
+        $this->teams[] = $teams;
+
+        return $this;
+    }
+
+    /**
+     * Remove teams
+     *
+     * @param \RockIT\TechgamesBundle\Entity\Team $teams
+     */
+    public function removeTeam(\RockIT\TechgamesBundle\Entity\Team $teams)
+    {
+        $this->teams->removeElement($teams);
+    }
+
+    /**
+     * Get teams
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTeams()
+    {
+        return $this->teams;
+    }
+
+    public function getDisplayName(){
+        return $this->firstName . " " . $this->lastName;
+    }
+
+    public function getAvatar($size = 80){
+
+        return $this->get_gravatar($this->email, $size);
+    }
+
+    private function get_gravatar( $email, $s = 80, $d = 'identicon', $r = 'g', $img = false, $atts = array() ) {
+        $url = 'http://www.gravatar.com/avatar/';
+        $url .= md5( strtolower( trim( $email ) ) );
+        $url .= "?s=$s&d=$d&r=$r";
+        if ( $img ) {
+            $url = '<img src="' . $url . '"';
+            foreach ( $atts as $key => $val )
+                $url .= ' ' . $key . '="' . $val . '"';
+            $url .= ' />';
+        }
+        return $url;
+    }
+
 }

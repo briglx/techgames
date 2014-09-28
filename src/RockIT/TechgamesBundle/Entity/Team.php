@@ -9,6 +9,7 @@
 namespace RockIT\TechgamesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * RockIT\TechgamesBundle\Entity\Team
@@ -24,7 +25,7 @@ class Team {
         $this->name = "Sample Team Name";
         $this->description = "Sample Team Description";
         $this->teamOwner = "";
-        $this->members = array();
+        $this->users = new ArrayCollection();
         $this->games = array();
 
     }
@@ -47,6 +48,13 @@ class Team {
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="teams")
+     * @ORM\JoinTable(name="teams_users")
+     **/
+    private $users;
 
     /**
      * @return mixed
@@ -96,14 +104,75 @@ class Team {
         $this->name = $name;
     }
 
-    public function getMembers(){
-        return array();
-    }
 
     public function getGames(){
         return array();
     }
 
 
+    /**
+     * Add members
+     *
+     * @param \RockIT\TechgamesBundle\Entity\User $members
+     * @return Team
+     */
+    public function addMember(\RockIT\TechgamesBundle\Entity\User $members)
+    {
+        $this->users[] = $members;
 
+        return $this;
+    }
+
+    /**
+     * Remove members
+     *
+     * @param \RockIT\TechgamesBundle\Entity\User $members
+     */
+    public function removeMember(\RockIT\TechgamesBundle\Entity\User $members)
+    {
+        $this->users->removeElement($members);
+    }
+
+    /**
+     * Get members
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMembers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Add users
+     *
+     * @param \RockIT\TechgamesBundle\Entity\User $users
+     * @return Team
+     */
+    public function addUser(\RockIT\TechgamesBundle\Entity\User $users)
+    {
+        $this->users[] = $users;
+
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \RockIT\TechgamesBundle\Entity\User $users
+     */
+    public function removeUser(\RockIT\TechgamesBundle\Entity\User $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
 }

@@ -36,17 +36,17 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-3">
-                            {{ team.getMembers() | length }} Members
+                            {{ team.users | length }} Members
                         </div>
                         <div class="col-md-9">
                             {{ team.getGames() | length }} Games
                         </div>
                     </div>
                     <div class="row">
-                    {% for member in team.getMembers() %}
+                    {% for member in team.users %}
                         <div class="p">
-                            <a href="{{path('profile_detail', {'profileId':member.getProfileId()})}}"><img class="enter-block" data-src="{{ asset('bundles/rockittechgames/js/holder.js/90x90')}}" alt="90x90" class="img-rounded"></a>
-                            <span ><a href="{{path('profile_detail', {'profileId':member.getProfileId()})}}">{{ member.getDisplayName() }}</a></span>
+                            <a href="{{path('profile_detail', {'profileId':member.getId()})}}"><img class="enter-block" src="{{ member.avatar(90) }}" alt="{{ member.username }}" class="img-rounded"></a>
+                            <span ><a href="{{path('profile_detail', {'profileId':member.getId()})}}">{{ member.username }}</a></span>
                         </div>
                     {% endfor %}
                     </div>

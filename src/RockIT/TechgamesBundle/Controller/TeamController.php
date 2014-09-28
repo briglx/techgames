@@ -219,4 +219,27 @@ class TeamController extends Controller
 
         return $this->redirect($this->generateUrl('admin_overview'));
     }
+
+    public function removeMemberAction($teamId, $profileId){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $team = $this->getDoctrine()
+            ->getRepository('RockITTechgamesBundle:Team')
+            ->findOneById($teamId);
+
+        $user = $this->getDoctrine()
+            ->getRepository('RockITTechgamesBundle:User')
+            ->findOneById($profileId);
+
+        $team->removeMember($user);
+
+
+        $em->flush();
+
+        // Remove member from team
+
+        return $this->redirect($this->generateUrl('team_edit', array("teamId" => $teamId))."?t=members" );
+
+    }
 }  
