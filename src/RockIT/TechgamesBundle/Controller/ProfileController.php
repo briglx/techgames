@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use RockIT\TechgamesBundle\Model\ProfileManager;
 use RockIT\TechgamesBundle\Model\FormValidator;
 use RockIT\TechgamesBundle\Entity\User;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ProfileController extends Controller
 {
@@ -292,5 +293,31 @@ class ProfileController extends Controller
         }
 
         return $this->redirect($this->generateUrl('admin_overview')."?t=users");
+    }
+
+    public function getAction()
+    {
+
+        $users = $this->getDoctrine()
+            ->getRepository('RockITTechgamesBundle:User')
+            ->findAll();
+
+        $reduced = array_reduce($users,
+
+            function(&$result, $item){
+                // at each step, push name into $item->id position
+                $result[$item->getId()] = $item->getDisplayName();
+                return $result;
+            },
+            array()
+        );
+
+
+        $response = new JsonResponse();
+        $response->setData(array(
+            'users' => $users
+        ));
+
+        return $response;
     }
 }

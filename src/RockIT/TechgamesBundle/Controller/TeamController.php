@@ -48,7 +48,10 @@ class TeamController extends Controller
             // Choose Correct validation
             if($activeTab == "members") {
 
-                $validator = new FormValidator();
+                $validations = array('userId' => 'number');
+                $required = array('userId');
+                $sanitize = array();
+                $validator = new FormValidator($validations, $required, $sanitize);
 
             }elseif($activeTab == "games"){
 
@@ -66,6 +69,13 @@ class TeamController extends Controller
 
             if($activeTab == "members") {
                 // nothing
+
+                $user = $this->getDoctrine()
+                    ->getRepository('RockITTechgamesBundle:User')
+                    ->findOneById($request->get("userId"));
+
+                $team->addMember($user);
+
             }elseif($activeTab == "games"){
                 // nothing
             } else{
@@ -238,6 +248,27 @@ class TeamController extends Controller
         $em->flush();
 
         // Remove member from team
+
+        return $this->redirect($this->generateUrl('team_edit', array("teamId" => $teamId))."?t=members" );
+
+    }
+
+    public function addMemberAction($teamId, $profileId){
+
+        $em = $this->getDoctrine()->getManager();
+
+        $team = $this->getDoctrine()
+            ->getRepository('RockITTechgamesBundle:Team')
+            ->findOneById($teamId);
+
+        $user = $this->getDoctrine()
+            ->getRepository('RockITTechgamesBundle:User')
+            ->findOneById($profileId);
+
+        $team->addMember($user);
+
+        $em->flush();
+
 
         return $this->redirect($this->generateUrl('team_edit', array("teamId" => $teamId))."?t=members" );
 

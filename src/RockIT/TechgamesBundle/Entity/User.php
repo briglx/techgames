@@ -11,6 +11,7 @@ namespace RockIT\TechgamesBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
+use JsonSerializable;
 
 
 /**
@@ -19,7 +20,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="techgames_users")
  * @ORM\Entity(repositoryClass="RockIT\TechgamesBundle\Entity\UserRepository")
  */
-class User implements UserInterface, \Serializable
+class User implements UserInterface, JsonSerializable, \Serializable
 {
     /**
      * @ORM\Column(type="integer")
@@ -501,7 +502,14 @@ class User implements UserInterface, \Serializable
     }
 
     public function getDisplayName(){
-        return $this->firstName . " " . $this->lastName;
+
+        $displayName = trim($this->firstName . " " . $this->lastName);
+
+        if(!$displayName){
+            $displayName =  $this->username;
+        }
+
+        return $displayName;
     }
 
     public function getAvatar($size = 80){
@@ -520,6 +528,17 @@ class User implements UserInterface, \Serializable
             $url .= ' />';
         }
         return $url;
+    }
+
+
+    public function jsonSerialize()
+    {
+        return array(
+            'displayName' => $this->getDisplayName(),
+            'id'=> $this->getId(),
+            'userName'=> $this->getUsername(),
+            'email'=> $this->getEmail()
+        );
     }
 
 }

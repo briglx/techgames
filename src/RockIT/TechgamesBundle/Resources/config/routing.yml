@@ -93,6 +93,9 @@ team_remove_member:
     pattern:  /team/{teamId}/member/{profileId}/remove
     defaults: { _controller: RockITTechgamesBundle:Team:removeMember }
 
+team_add_member:
+    pattern:  /team/{teamId}/member/{profileId}/add
+    defaults: { _controller: RockITTechgamesBundle:Team:addMember }
 
 
 school_detail:
@@ -120,3 +123,8 @@ user_edit:
 user_delete:
     pattern:  /user/{userId}/delete
     defaults: { _controller: RockITTechgamesBundle:Profile:delete }
+
+
+api_users:
+    pattern:  /api/user/
+    defaults: { _controller: RockITTechgamesBundle:Profile:get }
