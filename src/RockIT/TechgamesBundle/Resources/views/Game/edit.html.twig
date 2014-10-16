@@ -91,7 +91,12 @@
                 <div class="form-group">
                     <label for="owner" class="col-sm-2 control-label">Game Owner</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="owner" name="owner" value="">
+                        <input type="text" class="form-control typeahead" id="owner" name="owner" value="">
+                        {% if game.gameOwner %}
+                        <input type="hidden" id="gameOwnerId" name="gameOwnerId" value="{{game.gameOwner.id}}"/>
+                        {%  else %}
+                            <input type="hidden" id="gameOwnerId" name="gameOwnerId" />
+                        {% endif %}
                     </div>
                 </div>
 
@@ -135,6 +140,67 @@
             $('#{{ invalidField}}').parents(".form-group").addClass("has-error");
             {% endfor %}
         });
+
+
+        var data = {"users":[{"displayName":"Brig Lamoreaux","id":1,"userName":"brlamore","email":"brlamore@apollo.edu"},{"displayName":"brig","id":3,"userName":"brig","email":"brig@apollo.edu"},{"displayName":"Sandie Vega","id":4,"userName":"svega","email":"sandie.vega@avnet.com"},{"displayName":"Anon Anon","id":8,"userName":"shasta","email":"asdf@apollo.edu"},{"displayName":"sue@example.com","id":17,"userName":"sue@example.com","email":"sue@example.com"},{"displayName":"test@example.com","id":18,"userName":"test@example.com","email":"test@example.com"},{"displayName":"t3@example.com","id":19,"userName":"t3@example.com","email":"t3@example.com"},{"displayName":"t4@example.com","id":20,"userName":"t4@example.com","email":"t4@example.com"},{"displayName":"t5@example.com","id":21,"userName":"t5@example.com","email":"t5@example.com"},{"displayName":"fdas@apollo.edu","id":22,"userName":"fdas@apollo.edu","email":"fdas@apollo.edu"}]};
+        var userLookup = {};
+        var userLabels = [];
+
+        // Map user to lookup
+        $.each(data.users, function(idx, item) {
+
+            //for each item returned, if the display name is already included
+            //(e.g. multiple "John Smith" records) then add a unique value to the end
+            //so that the user can tell them apart.
+            if($.inArray(item.displayName, userLabels) > 0){
+                item.displayName = item.displayName + ' #' + item.id;
+            }
+
+
+            //add the label to the display array
+            userLabels.push( item.displayName );
+
+            //also store a mapping to get from label back to ID
+            userLookup[ item.displayName ] = item.id;
+
+        });
+
+
+        var users = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
+            // `states` is an array of state names defined in "The Basics"
+            local: $.map(userLabels, function(label) {
+                return { value: label };
+            })
+        });
+
+        // kicks off the loading/processing of `local` and `prefetch`
+        users.initialize();
+
+        $('.typeahead').typeahead(
+                {
+                    hint: true,
+                    highlight: true,
+                    minLength: 1
+                },
+                {
+                    name: 'users',
+                    displayKey: 'value',
+                    // `ttAdapter` wraps the suggestion engine in an adapter that
+                    // is compatible with the typeahead jQuery plugin
+                    source: users.ttAdapter()
+                });
+
+        $('.typeahead').on('typeahead:selected', function(event, selection, dataset){
+
+            // Find the id this selection matches
+            $("#gameOwnerId").val(userLookup[selection.value]);
+
+
+        });
+
+
     </script>
 
 {% endblock %}

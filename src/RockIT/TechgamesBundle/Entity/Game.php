@@ -101,6 +101,10 @@ class Game {
 
     private $supportingSponsors;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
     private $gameOwner;
 
     private $judge;
@@ -654,5 +658,18 @@ class Game {
     public function getDailySchedule()
     {
         return $this->schedule;
+    }
+
+    /**
+     * Set gameOwner
+     *
+     * @param \RockIT\TechgamesBundle\Entity\User $gameOwner
+     * @return Game
+     */
+    public function setGameOwner(\RockIT\TechgamesBundle\Entity\User $gameOwner = null)
+    {
+        $this->gameOwner = $gameOwner;
+
+        return $this;
     }
 }

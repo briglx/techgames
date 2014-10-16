@@ -185,6 +185,13 @@ class GameController extends Controller
                     $game->setIcon("");
                 }
 
+                if($request->get("gameOwnerId")){
+                    $game->setGameOwner('RockITTechgamesBundle:User', $request->get("gameOwnerId"));
+                }
+                else{
+                    $game->setGameOwner(null);
+                }
+
 
             }
 

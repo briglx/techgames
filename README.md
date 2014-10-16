@@ -151,7 +151,19 @@ sudo chown -R _www:_www app/logs
 ### Verify Site
 Open a browser and navigate `localhost/techgames/web/app_dev.php`
 
-3) Starting to Code
+3) Updating Code
+----------------------------------
+Once the code is installed on the machine, you'll need to update via git
+
+1. Run an update using the web user account
+
+	````
+	$ cd /path/to/application
+	$ sudo -u www-data git pull
+	````
+
+
+4) Starting to Code
 ----------------------------------
 Before you start to code. Be sure to create a branch for the work you'll do.
 
