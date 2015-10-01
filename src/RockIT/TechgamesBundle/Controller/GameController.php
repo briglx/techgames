@@ -284,7 +284,7 @@ class GameController extends Controller
 
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($game);
-
+print_r($game);
                 $em->flush();
 
                 $gameId = $game->getId();

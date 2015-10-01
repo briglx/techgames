@@ -34,7 +34,7 @@ class Game {
         $this->sponsor = "";
         $this->supportingSponsors =  array('1' => "Cisco");
         $this->gameOwner = "";
-        $this->judge = "";
+        $this->gameMaster = "";
         $this->location = "On";
         $this->capacity = "55";
         $this->teamSize = "2-3";
@@ -107,7 +107,12 @@ class Game {
      */
     private $gameOwner;
 
-    private $judge;
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private $gameMaster;
+
+
 
     /**
      * @ORM\Column(name="location", type="string", length=10)
@@ -640,10 +645,7 @@ class Game {
         return $this->gameOwner;
     }
 
-    public function getJudge()
-    {
-        return $this->judge;
-    }
+
 
     public function getTeams()
     {
@@ -671,5 +673,28 @@ class Game {
         $this->gameOwner = $gameOwner;
 
         return $this;
+    }
+
+    /**
+     * Set gameMaster
+     *
+     * @param \RockIT\TechgamesBundle\Entity\User $gameMaster
+     * @return Game
+     */
+    public function setGameMaster(\RockIT\TechgamesBundle\Entity\User $gameMaster = null)
+    {
+        $this->gameMaster = $gameMaster;
+
+        return $this;
+    }
+
+    /**
+     * Get gameMaster
+     *
+     * @return \RockIT\TechgamesBundle\Entity\User 
+     */
+    public function getGameMaster()
+    {
+        return $this->gameMaster;
     }
 }
